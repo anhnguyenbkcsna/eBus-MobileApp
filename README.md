@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # eBus-MobileApp
-=======
+
 # React Native Expo Redux Template
 
 This is a template for building React Native apps with the Expo framework and Redux for state management. It includes a basic file structure and configuration for setting up a Redux store, along with some example actions and reducers.
