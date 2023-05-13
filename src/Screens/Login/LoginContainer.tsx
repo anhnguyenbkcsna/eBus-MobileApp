@@ -3,13 +3,16 @@
 // import { RootScreens } from "..";
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading, Button } from "native-base";
 import { User } from "@/Services";
 
 import { Login } from "./Login";
 import { Signup } from "./Signup";
+
+import LoginBg from "../../Assets/Login.png"
+import SignupBg from "../../Assets/Signup.png"
 
 // type LoginScreenNavigatorProps = NativeStackScreenProps<
 //   RootStackParamList,
@@ -27,15 +30,21 @@ export const LoginContainer = () => {
   }
 
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
+      <ImageBackground source={isLogin ? LoginBg : SignupBg} resizeMode="cover" style={styles.container}>
       <View style={styles.logo}>
-        <Image source = {require('../../Assets/logo.png')} />
+        {isLogin ?
+          <Image source = {require('../../Assets/eBus.png')} style={styles.logoImg}/>
+          : <Text style={styles.title}>
+            eBus
+          </Text>
+        }
       </View>
 
       {isLogin ? 
         <View style={styles.btnContainer}>
           <Button style={styles.activebtn} onPress={handleSetLogin} >
-            <Text style={styles.textbtn}>
+            <Text style={styles.activetextbtn}>
               {i18n.t(LocalizationKey.LOGIN)}
             </Text>
           </Button>
@@ -53,7 +62,7 @@ export const LoginContainer = () => {
             </Text>
           </Button>
           <Button style={styles.activebtn} onPress={handleSetLogin} >
-            <Text style={styles.textbtn}>
+            <Text style={styles.activetextbtn}>
               {i18n.t(LocalizationKey.SIGNUP)}
             </Text>
           </Button>
@@ -63,7 +72,8 @@ export const LoginContainer = () => {
       <View style={styles.formContainer}>
         {isLogin ? <Login /> : <Signup/>}
       </View>
-    </View>
+      </ImageBackground>
+    // </View>
   );
   
 };
@@ -77,6 +87,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  logo: {
+    width: 120,
+    height: 120,
+  },
+  logoImg:{
+    height: "100%",
+    width: "auto",
+  },
+  title: {
+    fontWeight: "bold",
+    color: "#50A458",
+    fontSize: 48,
+    paddingVertical: 36
+  },
   btnContainer: {
     flex: 2,
     flexDirection: "row",
@@ -85,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#BCFFBF",
     borderRadius: 100,
     alignItems: "center",
-    margin: 12,
+    marginBottom: 12,
   },
   activebtn: {
     width: "45%",
@@ -108,7 +132,12 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   textbtn: {
+    color: "#50A458",
     textAlign: "center",
+  },
+  activetextbtn: {
+    textAlign: "center",
+    color: "#FFFFFF",
   },
   formContainer: {
     flex: 1,

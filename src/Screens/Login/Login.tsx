@@ -5,8 +5,6 @@ import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading, Button } from "native-base";
 import { User } from "@/Services";
 
-import Logo from "../../assets/logo.png"
-
 export const Login = () => {
 //   const { data, isLoading } = props;
     const [username, setUsername] = useState('')
@@ -46,10 +44,13 @@ export const Login = () => {
         </Text>
         <View style={styles.otherSignUpContainer}>
           <View style={styles.item}>
+            <Image source = {require('../../Assets/logoGoogle.png')} style={styles.logoImg}/>
           </View>
           <View style={styles.item}>
+            <Image source = {require('../../Assets/logoFacebook.png')} style={styles.logoImg}/>
           </View>
           <View style={styles.item}>
+            <Image source = {require('../../Assets/Frame31.png')} style={styles.logoImg}/>
           </View>
         </View>
   		</View>
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 4,
     marginBottom: 20,
+    color: "#50A458",
   },
   input: {
     height: 50,
@@ -99,5 +101,14 @@ const styles = StyleSheet.create({
     margin: 8,
     borderRadius: "50%",
     backgroundColor: "#FFFFFF"
-  } 
+  },
+  logo: {
+    width: 30,
+    height: 30,
+  },
+  logoImg:{
+    height: "100%",
+    width: "auto",
+    transform: [{scale: (0.8, 0.8)}]
+  }
 });
