@@ -3,4 +3,13 @@ export enum LocalizationKey {
   HOME = "home",
   START = "start",
   LOADING = "loading",
+  LOGIN = "login",
+  SIGNUP = "signup",
+  FORGOTPASSWORD = "forgotpassword",
+  SIGNUPWITH = 'signupwith',
+  CREATEACCOUNT = 'createaccount',
+  USERNAME = 'username',
+  EMAIL = 'email',
+  PHONENUMBER = 'phonenumber',
+  PASSWORD = 'password',
 }
