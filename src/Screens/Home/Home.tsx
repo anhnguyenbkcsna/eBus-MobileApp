@@ -1,6 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
@@ -10,7 +10,16 @@ export interface IHomeProps {
   isLoading: boolean;
 }
 
-export const Home = (props: IHomeProps) => {
+export const Home = function(props: IHomeProps) {
+  return (
+    <View style={styles.container}>
+      <Text>Hello</Text>
+      <Image source={require('../../../assets/Resources/top_bar.png')} />
+    </View>
+  )
+};
+
+export const Home1 = (props: IHomeProps) => {
   const { data, isLoading } = props;
   return (
     <View style={styles.container}>
