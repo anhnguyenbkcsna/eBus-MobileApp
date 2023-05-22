@@ -13,7 +13,7 @@ import { Signup } from "./Signup";
 
 import LoginBg from "../../Assets/Login.png"
 import SignupBg from "../../Assets/Signup.png"
-
+import { Colors, FontSize } from "@/Theme/Variables";
 // type LoginScreenNavigatorProps = NativeStackScreenProps<
 //   RootStackParamList,
 //   RootScreens.LOGIN
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // width: "100%",
     // height: "100%",
-    backgroundColor: "#DDDDDD",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -96,24 +95,25 @@ const styles = StyleSheet.create({
     width: "auto",
   },
   title: {
+    textAlign: "center",
     fontWeight: "bold",
-    color: "#50A458",
-    fontSize: 48,
-    paddingVertical: 36
+    color: Colors.PRIMARY,
+    fontSize: FontSize.LARGE,
+    paddingVertical: 30
   },
   btnContainer: {
     flex: 2,
     flexDirection: "row",
     maxHeight: 50,
     maxWidth: "80%",
-    backgroundColor: "#BCFFBF",
+    backgroundColor: Colors.SECONDARY,
     borderRadius: 100,
     alignItems: "center",
     marginBottom: 12,
   },
   activebtn: {
     width: "45%",
-    backgroundColor: "#50A458",
+    backgroundColor: Colors.PRIMARY,
     // color: "#FFFFFF",
     minHeight: "75%",
     borderRadius: 100,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: "45%",
-    backgroundColor: "#BCFFBF",
+    backgroundColor: Colors.SECONDARY,
     minHeight: "75%",
     borderRadius: 100,
     justifyContent: "center",
@@ -137,18 +137,18 @@ const styles = StyleSheet.create({
   },
   activetextbtn: {
     textAlign: "center",
-    color: "#FFFFFF",
+    color: Colors.WHITE,
   },
   formContainer: {
     flex: 1,
-    backgroundColor: "#BCFFBF",
+    backgroundColor: Colors.SECONDARY,
     justifyContent: "center",
     border: "solid 1 #dddddd",
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
     padding: "5%",
     minWidth: "90%",
     maxHeight: "60%",
-    backgroundColor: "#DEFFDD",
+    backgroundColor: Colors.TERTIARY,
     borderRadius: "25px",
   }
 });

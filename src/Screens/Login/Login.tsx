@@ -1,9 +1,11 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading, Button } from "native-base";
-import { User } from "@/Services";
+// import { User } from "@/Services";
+
+import { Colors } from "@/Theme/Variables";
 
 export const Login = () => {
 //   const { data, isLoading } = props;
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 4,
     marginBottom: 20,
-    color: "#50A458",
+    color: Colors.PRIMARY,
   },
   input: {
     height: 50,
@@ -79,12 +81,12 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   submitBtn: {
-    backgroundColor: "#50A458",
+    backgroundColor: Colors.PRIMARY,
     margin: 4,
     marginVertical: 12,
   },
   textBtn: {
-    color: "#FFFFFF",
+    color: Colors.WHITE,
   },
   signupwith: {
     fontSize: 12,
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 8,
     borderRadius: "50%",
-    backgroundColor: "#FFFFFF"
+    backgroundColor: Colors.WHITE
   },
   logo: {
     width: 30,
