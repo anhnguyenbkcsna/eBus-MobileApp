@@ -25,9 +25,9 @@ export const MainNavigator = () => {
 
   const renderScene = BottomNavigation.SceneMap({
     home: HomeContainer,
-    bus: AlbumsRoute,
-    email: RecentsRoute,
-    account: NotificationsRoute,
+    bus: HomeContainer,
+    email: HomeContainer,
+    account: HomeContainer,
   });
 
   return (

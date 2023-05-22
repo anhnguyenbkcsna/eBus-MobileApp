@@ -23,9 +23,9 @@ const ApplicationNavigator = () => {
     <NavigationContainer>
       <StatusBar />
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
-        <RootStack.Screen
-          name={RootScreens.LOGIN}
-          component={LoginContainer}
+      <RootStack.Screen
+          name={RootScreens.WELCOME}
+          component={WelcomeContainer}
         />
         <RootStack.Screen
           name={RootScreens.WELCOME1}
@@ -39,6 +39,10 @@ const ApplicationNavigator = () => {
           name={RootScreens.MAIN}
           component={MainNavigator}
           options={{}}
+        />
+        <RootStack.Screen
+          name={RootScreens.LOGIN}
+          component={LoginContainer}
         />
       </RootStack.Navigator>
     </NavigationContainer>
