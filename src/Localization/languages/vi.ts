@@ -13,4 +13,11 @@ export const vi = {
   [LocalizationKey.USERNAME]: "Tên đăng nhập",
   [LocalizationKey.PHONENUMBER]: "Số điện thoại",
   [LocalizationKey.PASSWORD]: "Mật khẩu",
+  [LocalizationKey.BOOK]: "Đặt vé",
+  // Booking
+  [LocalizationKey.CHOOSESTARTPOS]: "Chọn điểm bắt đầu",
+  [LocalizationKey.CHOOSEENDPOS]: "Chọn điểm đến",
+  [LocalizationKey.CHOOSEDATE]: "Chọn lịch",
+  [LocalizationKey.CHOOSEBUSLINE]: "Chọn tuyến xe",
+  [LocalizationKey.TICKETINFO]: "Thông tin vé xe buýt",
 };

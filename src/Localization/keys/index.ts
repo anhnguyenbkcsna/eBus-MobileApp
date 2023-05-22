@@ -12,4 +12,11 @@ export enum LocalizationKey {
   EMAIL = 'email',
   PHONENUMBER = 'phonenumber',
   PASSWORD = 'password',
+  BOOK = 'book',
+  // Booking
+  CHOOSESTARTPOS = 'choosestartpos',
+  CHOOSEENDPOS = 'chooseendpos',
+  CHOOSEDATE = 'choosedate',
+  CHOOSEBUSLINE = 'choosebusline',
+  TICKETINFO = 'ticketinfo',
 }

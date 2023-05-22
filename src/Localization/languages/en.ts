@@ -13,5 +13,12 @@ export const en = {
   [LocalizationKey.USERNAME]: "Username",
   [LocalizationKey.PHONENUMBER]: "Phonenumber",
   [LocalizationKey.PASSWORD]: "Password",
+  [LocalizationKey.BOOK]: "Book",
+  // Booking
+  [LocalizationKey.CHOOSESTARTPOS]: "Select start point",
+  [LocalizationKey.CHOOSEENDPOS]: "Select end point",
+  [LocalizationKey.CHOOSEDATE]: "Pick date",
+  [LocalizationKey.CHOOSEBUSLINE]: "Choose bus line",
+  [LocalizationKey.TICKETINFO]: "Ticket info",
 
 };

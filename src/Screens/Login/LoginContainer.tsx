@@ -30,7 +30,7 @@ export const LoginContainer = () => {
   }
 
   return (
-    // <View style={styles.container}>
+    <View style={styles.container}>
       <ImageBackground source={isLogin ? LoginBg : SignupBg} resizeMode="cover" style={styles.container}>
       <View style={styles.logo}>
         {isLogin ?
@@ -73,7 +73,7 @@ export const LoginContainer = () => {
         {isLogin ? <Login /> : <Signup/>}
       </View>
       </ImageBackground>
-    // </View>
+    </View>
   );
   
 };
