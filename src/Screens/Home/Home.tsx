@@ -17,7 +17,7 @@ export const Home = function(props: IHomeProps) {
       <View style={styles.header}>
           <ImageBackground
             source={require('../../../assets/Resources/top_bar.png')}
-            resizeMode="corver"
+            resizeMode="cover"
             style = {{width: '100%', height: '100%'}}
           >
             <View style={{marginLeft: 30, width: '100%', height: '100%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -37,10 +37,17 @@ export const Home = function(props: IHomeProps) {
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: '-7%'}}>
             <Searchbar
               placeholder="Tìm kiếm địa điểm"
-              style={{width: '95%', borderRadius: '10%', backgroundColor: 'white', shadowColor: 'black', shadowOpacity: 0.2, shadowRadius: 5}}
+              style={{width: '95%', 
+                      borderRadius: 10, 
+                      backgroundColor: 'white',
+                      shadowColor: 'black',
+                      shadowOpacity: 0.3,
+                      shadowOffset: { width: 0, height: 2 },
+                      shadowRadius: 10,
+                      elevation: 5}}
             />
           </View>
-          <View style={{flex: 3, borderWidth: 1, borderRadius: '15%', marginTop: '5%'}}>
+          <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
             <Text></Text>
           </View>
       </View>
@@ -50,7 +57,7 @@ export const Home = function(props: IHomeProps) {
             
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
 
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Pin.png')} 
                   style = {{height: 55, width: 55}}        
@@ -64,7 +71,7 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>            
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Maps.png')} 
                   style = {{height: 55, width: 55}}        
@@ -77,7 +84,7 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/ticket.png')} 
                   style = {{height: 55, width: 55}}        
@@ -91,7 +98,7 @@ export const Home = function(props: IHomeProps) {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Clock.png')} 
                   style = {{height: 55, width: 55}}        
@@ -109,7 +116,7 @@ export const Home = function(props: IHomeProps) {
             
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
 
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Hotline.png')} 
                   style = {{height: 55, width: 55}}        
@@ -123,7 +130,7 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>            
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Fivestars.png')} 
                   style = {{height: 55, width: 55}}        
@@ -136,7 +143,7 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Gameconsole.png')} 
                   style = {{height: 55, width: 55}}        
@@ -150,7 +157,7 @@ export const Home = function(props: IHomeProps) {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: '20%'}}>
+              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Sun.png')} 
                   style = {{height: 55, width: 55}}        
