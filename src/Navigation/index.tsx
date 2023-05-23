@@ -6,7 +6,7 @@ import { MainNavigator } from "./Main";
 import { WelcomeContainer } from "@/Screens/Welcome";
 import { RootScreens } from "@/Screens";
 import { LoginContainer } from "@/Screens/Login";
-import { BookingContainer } from "@/Screens/Booking";
+import { PickContainer } from "@/Screens/Booking";
 
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
@@ -25,7 +25,7 @@ const ApplicationNavigator = () => {
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
         <RootStack.Screen
           name={RootScreens.BOOKING}
-          component={BookingContainer}
+          component={PickContainer}
         />
         <RootStack.Screen
           name={RootScreens.MAIN}

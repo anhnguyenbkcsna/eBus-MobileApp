@@ -1,54 +1,88 @@
 import React, { useState } from "react";
 import { i18n, LocalizationKey } from "@/Localization";
-import { View, Text, StyleSheet, Image, TextInput, ImageBackground } from "react-native";
-
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpacity } from "react-native";
+import { Button, Modal } from 'native-base';
 import { Colors, FontSize } from "@/Theme/Variables";
-import { Button } from "native-base";
-// import { TopMidTitle } from "@/Components";
+import DatePicker from 'react-native-date-picker'
+import { RadioButton } from 'react-native-paper';
 
+import { PickDate } from "./PickDate";
 export const TicketInfo = () => {
-    const [startPos, setStartPos] = useState('Chỗ này')
-    const [endPos, setEndPos] = useState('chưa có')
-    const [date, setDate] = useState('sửa lại')
-    const [busline, setBusline] = useState('dữ liệu')
+    const [open, setOpen] = useState(false)
+    const [date, setDate] = useState(new Date())
+    const [checked, setChecked] = React.useState('momo');
+    const payment = ['momo', 'other']
+    
+    const [startPos, setStartPos] = useState('')
+    const [endPos, setEndPos] = useState('')
+    const [pickedDate, setPickedDate] = useState('')
+    const [busline, setBusline] = useState('')
 
     return (
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <Text style={styles.title}>Đặt vé xe buýt</Text>
+                    <Text style={styles.title}>Xác nhận thông tin vé</Text>
                 </ImageBackground>
             </View>
 
             <View style={styles.form}>
-                <Text>{i18n.t(LocalizationKey.TICKETINFO)}</Text>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
+                <Text style={styles.subtitle}>
+                    Thông tin vé xe buýt
+                </Text>
+                <TouchableOpacity  style={styles.formElement}>
+                    <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
+                </TouchableOpacity>
+                <TouchableOpacity  style={styles.formElement}>
+                    <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : date}
+                </TouchableOpacity>
+
+                {/* <Button onPress={() => setOpen(true)} > */}
+                <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
+                    <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
+                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
+                </TouchableOpacity>
+
+                {/* <Modal animationType='slide' transparent={true} visible={open}>
+                    <View>
+                        <DatePicker modal open={open} date={date} display="inline"/>
+                    </View>
+                </Modal> */}
+                {/* </Button> */}
+
+                <TouchableOpacity  style={styles.formElement}>
+                    <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSEBUSLINE) : busline}
                     </Text>
-                </View>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.form2}>
+                <Text style={styles.subtitle}>
+                    Chọn hình thức thanh toán
+                </Text>
+                {payment.map((ele) => <TouchableOpacity style={styles.formElement} onPress={() => setChecked(ele)}>
+                    <RadioButton
+                        color={Colors.PRIMARY}
+                        value= {ele == "momo" ? "Momo" : i18n.t(LocalizationKey.OTHERPAYMENT)}
+                        status={ checked === ele ? 'checked' : 'unchecked' }
+                    />
+                    <Text style={styles.formText}>
+                        {ele == "momo" ? "Momo" : i18n.t(LocalizationKey.OTHERPAYMENT)}
+                    </Text>
+                </TouchableOpacity>)}
             </View>
             <Button style={styles.btn}>
-                <Text style={styles.btnText}>{i18n.t(LocalizationKey.BOOK)}</Text>
+                <Text style={styles.btnText}>{i18n.t(LocalizationKey.PAY)}</Text>
             </Button>
         </View>
     )
@@ -73,6 +107,13 @@ const styles = StyleSheet.create({
         fontSize: FontSize.REGULAR,
         fontWeight: "bold",
     },
+    subtitle: {
+        fontSize: FontSize.SMALL,
+        textAlign: 'center',
+        margin: 5,
+        fontWeight: 'bold',
+        color: Colors.PRIMARY
+    },
     topmidTitle: {
         // minHeight: 300,
         width: '100%',
@@ -92,10 +133,16 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.WHITE,
         borderRadius: 15,
         minWidth: '90%',
-        maxHeight: '35%',
-        alignItems: "left",
+        maxHeight: '40%',
         marginVertical: 20,
-        textAlign: 'center',
+    },
+    form2: {
+        flex: 1,
+        backgroundColor: Colors.WHITE,
+        borderRadius: 15,
+        minWidth: '90%',
+        maxHeight: '20%',
+        marginBottom: 20,
     },
     formElement: {
         flex: 2,
@@ -107,5 +154,8 @@ const styles = StyleSheet.create({
     logoImg: {
         height: 25,
         // width: "auto",
+    },
+    formText: {
+        paddingTop: 5
     }
 })

@@ -19,4 +19,6 @@ export enum LocalizationKey {
   CHOOSEDATE = 'choosedate',
   CHOOSEBUSLINE = 'choosebusline',
   TICKETINFO = 'ticketinfo',
+  PAY = 'pay',
+  OTHERPAYMENT = 'otherpayment',
 }

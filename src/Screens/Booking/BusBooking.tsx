@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { i18n, LocalizationKey } from "@/Localization";
-import { View, Text, StyleSheet, Image, TextInput, ImageBackground } from "react-native";
-
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableHighlight } from "react-native";
+import { Button, Modal } from "native-base";
 import { Colors, FontSize } from "@/Theme/Variables";
-import { Button } from "native-base";
-// import { TopMidTitle } from "@/Components";
+import DatePicker from 'react-native-date-picker'
 
+import { PickDate } from "./PickDate";
 export const BusBooking = () => {
+    const [open, setOpen] = useState(false)
+    const [date, setDate] = useState(new Date())
+    
     const [startPos, setStartPos] = useState('')
     const [endPos, setEndPos] = useState('')
-    const [date, setDate] = useState('')
+    const [pickedDate, setPickedDate] = useState('')
     const [busline, setBusline] = useState('')
 
     return (
@@ -21,30 +24,40 @@ export const BusBooking = () => {
             </View>
 
             <View style={styles.form}>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
+                <TouchableHighlight  style={styles.formElement}>
+                    <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
+                </TouchableHighlight>
+                <TouchableHighlight  style={styles.formElement}>
+                    <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : date}
+                </TouchableHighlight>
+
+                {/* <Button onPress={() => setOpen(true)} > */}
+                <TouchableHighlight style={styles.formElement} onPress={() => setOpen(true)} >
+                    <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
+                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
                     </Text>
-                </View>
-                <View style={styles.formElement}>
-                    <Text>
-                        <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
+                </TouchableHighlight>
+
+                {/* <Modal animationType='slide' transparent={true} visible={open}>
+                    <View>
+                        <DatePicker modal open={open} date={date} display="inline"/>
+                    </View>
+                </Modal> */}
+                {/* </Button> */}
+
+                <TouchableHighlight style={styles.formElement}>
+                    <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
+                    <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSEBUSLINE) : busline}
                     </Text>
-                </View>
+                </TouchableHighlight>
             </View>
             <Button style={styles.btn}>
                 <Text style={styles.btnText}>{i18n.t(LocalizationKey.BOOK)}</Text>
@@ -105,5 +118,8 @@ const styles = StyleSheet.create({
     logoImg: {
         height: 25,
         // width: "auto",
+    },
+    formText: {
+        paddingTop: 5
     }
 })

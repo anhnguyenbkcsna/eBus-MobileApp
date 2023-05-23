@@ -31,8 +31,8 @@ export enum NavigationColors {
  */
 export enum FontSize {
   SMALL = 16,
-  REGULAR = 24,
-  TITLE = 32,
+  REGULAR = 20,
+  TITLE = 28,
   LARGE = 48,
 }
 
