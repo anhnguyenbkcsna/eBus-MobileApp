@@ -1,17 +1,15 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
+import { RootScreens } from "..";
+import MapView from 'react-native-maps';
 
-export interface IHomeProps {
-  data: User | undefined;
-  isLoading: boolean;
-}
 
-export const Home = function(props: IHomeProps) {
+export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -48,7 +46,7 @@ export const Home = function(props: IHomeProps) {
             />
           </View>
           <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
-            <Text></Text>
+            <MapView style={{width: '100%', height: '100%', borderRadius: 15}} />
           </View>
       </View>
 
@@ -57,12 +55,12 @@ export const Home = function(props: IHomeProps) {
             
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
 
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Pin.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Tra cứu</Text>
@@ -71,12 +69,12 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>            
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Maps.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Tìm đường</Text>
@@ -84,12 +82,12 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/ticket.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Đặt vé</Text>
@@ -98,12 +96,12 @@ export const Home = function(props: IHomeProps) {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Clock.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Lịch sử</Text>
@@ -116,12 +114,12 @@ export const Home = function(props: IHomeProps) {
             
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
 
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Hotline.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Tổng đài</Text>
@@ -130,12 +128,16 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>            
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity
+                 style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                 onPress={() => props.onNavigate(RootScreens.REPORT)}
+              >
                 <Image 
+                  
                   source={require('../../../assets/Resources/Fivestars.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Góp ý</Text>
@@ -143,12 +145,12 @@ export const Home = function(props: IHomeProps) {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Gameconsole.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Minigame</Text>
@@ -157,12 +159,12 @@ export const Home = function(props: IHomeProps) {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <View style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
                 <Image 
                   source={require('../../../assets/Resources/Sun.png')} 
                   style = {{height: 55, width: 55}}        
                 />
-              </View> 
+              </TouchableOpacity> 
 
               <View>
                 <Text style={{fontWeight: 'bold'}}>Thời tiết</Text>
