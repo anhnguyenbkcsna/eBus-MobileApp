@@ -32,8 +32,6 @@ const ApplicationNavigator = () => {
       <StatusBar />
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
         <RootStack.Screen
-          name={RootScreens.BOOKING}
-          component={PickContainer}
           name={RootScreens.WELCOME}
           component={WelcomeContainer}
         />
