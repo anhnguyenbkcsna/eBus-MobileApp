@@ -4,9 +4,10 @@ import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableHig
 import { Button, Modal } from "native-base";
 import { Colors, FontSize } from "@/Theme/Variables";
 import DatePicker from 'react-native-date-picker'
+import { RootScreens } from "..";
 
 import { PickDate } from "./PickDate";
-export const BusBooking = () => {
+export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; }) => {
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState(new Date())
     

@@ -10,36 +10,57 @@ import ListItem from "react-native-paper/lib/typescript/src/components/List/List
 import { PickStart } from "./PickStart";
 import { PickEnd } from "./PickEnd";
 import { PickBusLine } from "./PickBusLine";
+import { RootScreens } from "..";
 
-export const PickContainer = ({screen}) => {
-    const [defaultScreen, setDefaultScreen] = useState('start')
+export const PickStartPage = () => {
+    
     const [search, setSearch] = useState('')
     const [select, setSelect] = useState('')
-      
     return (
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    {defaultScreen == 'start' && <Text style={styles.title}>Chọn trạm xuất phát</Text>}
-                    {defaultScreen == 'end' && <Text style={styles.title}>Chọn trạm muốn đến</Text>}
-                    {defaultScreen == 'busline' && <Text style={styles.title}>Chọn tuyến xe buýt</Text>}
+                    <Text style={styles.title}>Chọn trạm xuất phát</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setSearch}
                         value={search}
-                        placeholder= {defaultScreen != 'busline' ? 'Nhập trạm cần tìm' : 'Nhập chuyến xe cần tìm'}
+                        placeholder= {'Nhập trạm cần tìm'}
                     />
                 </ImageBackground>
             </View>
 
             <View style={styles.list}>
-                {defaultScreen == 'start' && <PickStart />}
-                {defaultScreen == 'end' && <PickEnd />}
-                {defaultScreen == 'busline' && <PickBusLine />}
+                <PickStart />
             </View>
         </View>
     )
 }
+
+// export const PickEndContainer = () => {
+    
+//     const [search, setSearch] = useState('')
+//     const [select, setSelect] = useState('')
+//     return (
+//         <View style={styles.container}>
+//             <View style={styles.topmidTitle}>
+//                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
+//                     <Text style={styles.title}>Chọn trạm muốn đến</Text>
+//                     <TextInput
+//                         style={styles.input}
+//                         onChangeText={setSearch}
+//                         value={search}
+//                         placeholder= {'Nhập trạm cần tìm'}
+//                     />
+//                 </ImageBackground>
+//             </View>
+
+//             <View style={styles.list}>
+//                 <PickBusLine />
+//             </View>
+//         </View>
+//     )
+// }
 
 const styles = StyleSheet.create({
     container: {

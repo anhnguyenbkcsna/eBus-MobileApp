@@ -1,3 +1,13 @@
-// export * from './BusBooking'
-// export * from './TicketInfo'
-export * from './PickContainer'
+import React from "react";
+import { PickStartPage } from './PickStartPage';
+
+export const PickStartContainer = () => {
+  return (
+    <PickStartPage></PickStartPage>
+  )
+}
+
+
+
+
+

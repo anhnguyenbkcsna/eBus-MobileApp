@@ -12,4 +12,8 @@ export enum RootScreens {
   REPORT = "Report",
   REPORT_RESULT = "ReportResult",
   ROUTE = "Route"
+  PICK_START = "PickStart",
+  PICK_END = "PickEnd",
+  PICK_BUSLINE = "PickBusline",
+  BUS_BOOKING = "BusBooking"
 }
