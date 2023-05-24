@@ -5,6 +5,7 @@ import { Button, Modal } from 'native-base';
 import { Colors, FontSize } from "@/Theme/Variables";
 import DatePicker from 'react-native-date-picker'
 import { RadioButton } from 'react-native-paper';
+import { Ionicons } from '@expo/vector-icons';
 
 import { PickDate } from "./PickDate";
 export const TicketInfo = () => {
@@ -22,7 +23,21 @@ export const TicketInfo = () => {
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <Text style={styles.title}>Xác nhận thông tin vé</Text>
+                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                        <Ionicons 
+                            style={{ fontSize: 30, color: 'white', marginLeft: '5%' }} name="arrow-back-outline"
+                            // onPress={() => props.onNavigate(RootScreens.ACCOUNT)}
+                        />
+                        <Text style={styles.title}>
+                            Chọn trạm xuất phát
+                        </Text>
+                    </View>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setSearch}
+                        value={search}
+                        placeholder= {'Nhập trạm cần tìm'}
+                    />
                 </ImageBackground>
             </View>
 

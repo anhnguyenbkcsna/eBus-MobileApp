@@ -10,6 +10,8 @@ import { AccountContainer, AccountNotLoginContainer, AccountDetailContainer, Rep
 import { PickStartContainer, PickEndContainer, PickBuslineContainer, BusBookingContainer} from "@/Screens/Booking";
 import { HomeContainer } from "@/Screens/Home";
 import { RouteContainer } from "@/Screens/Route";
+import { PickStartPage } from "@/Screens/Booking/PickStartPage";
+import { BusBooking } from "@/Screens/Booking/BusBooking";
 
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
@@ -38,8 +40,8 @@ const ApplicationNavigator = () => {
       <StatusBar />
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
         <RootStack.Screen
-          name={RootScreens.WELCOME}
-          component={WelcomeContainer}
+          name={RootScreens.PICK_START}
+          component={BusBooking}
         />
         <RootStack.Screen
           name={RootScreens.WELCOME1}
@@ -74,9 +76,6 @@ const ApplicationNavigator = () => {
         <RootStack.Screen
           name={RootScreens.ROUTE}
           component={RouteContainer}
-        />
-          name={RootScreens.PICK_START}
-          component={PickStartContainer}
         />
 
         {/* <RootStack.Screen

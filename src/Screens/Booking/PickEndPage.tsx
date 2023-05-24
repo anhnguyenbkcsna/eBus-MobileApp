@@ -6,6 +6,7 @@ import { Button, FlatList } from 'native-base';
 
 import { Colors, FontSize } from "@/Theme/Variables";
 import ListItem from "react-native-paper/lib/typescript/src/components/List/ListItem";
+import { Ionicons } from '@expo/vector-icons';
 
 import { PickStart } from "./PickStart";
 import { PickEnd } from "./PickEnd";
@@ -20,12 +21,20 @@ export const PickEndPage = (props: {onNavigate: (string: RootScreens) => void; }
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <Text style={styles.title}>Chọn trạm muốn đến</Text>
+                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                        <Ionicons 
+                            style={{ fontSize: 30, color: 'white', marginLeft: '5%' }} name="arrow-back-outline"
+                            // onPress={() => props.onNavigate(RootScreens.ACCOUNT)}
+                        />
+                        <Text style={styles.title}>
+                            Chọn trạm muốn đến
+                        </Text>
+                    </View>
                     <TextInput
                         style={styles.input}
                         onChangeText={setSearch}
                         value={search}
-                        placeholder= {'Nhập trạm muốn đến'}
+                        placeholder= {'Nhập trạm cần tìm'}
                     />
                 </ImageBackground>
             </View>
@@ -77,10 +86,14 @@ const styles = StyleSheet.create({
         minHeight: '20%',
     },
     title: {
-        textAlign: 'center',
         color: Colors.WHITE,
         fontSize: FontSize.REGULAR,
         fontWeight: "bold",
+        flex: 1, 
+        flexDirection: 'column', 
+        alignItems: 'center',
+        // backgroundColor: 'black'
+        paddingLeft: 10,
     },
     subtitle: {
         fontSize: FontSize.SMALL,

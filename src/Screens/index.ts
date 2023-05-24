@@ -11,7 +11,7 @@ export enum RootScreens {
   ACCOUNT_DETAIL = "AccountDetail",
   REPORT = "Report",
   REPORT_RESULT = "ReportResult",
-  ROUTE = "Route"
+  ROUTE = "Route",
   PICK_START = "PickStart",
   PICK_END = "PickEnd",
   PICK_BUSLINE = "PickBusline",
