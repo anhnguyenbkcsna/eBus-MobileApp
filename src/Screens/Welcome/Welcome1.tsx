@@ -33,7 +33,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, TextInput, View, Image, Button, TouchableHighlight } from 'react-native';
 import { RootScreens } from "..";
 
-export const Welcome = (props: {onNavigate: (string: RootScreens) => void; }) => {
+export const Welcome1 = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
     <View style={styles.container}>
       <View style={{flex: 3, width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
@@ -44,22 +44,22 @@ export const Welcome = (props: {onNavigate: (string: RootScreens) => void; }) =>
       </View>
       <View style={{flex: 4, width: '100%', height: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: -20}}>
         <Image 
-          source={require('../../../assets/Resources/Artboard12x1.png')} 
+          source={require('../../../assets/Resources/Group33.png')} 
           style = {{width: '80%', height: '100%'}}        
         /> 
       </View>
       <View style={{flex: 2}}>
-        <Text style={{color: 'black', fontSize: 30, textAlign: 'center', fontWeight: 'bold', marginTop: 0, marginBottom: 5, marginLeft: 20, marginRight: 20}}>Chào mừng bạn đến eBus</Text>
-        <Text style={{color: 'black', fontSize: 15, textAlign: 'center', marginTop: 0, marginBottom: 0, marginLeft: 40, marginRight: 40}}>Bạn có thể dùng eBus để tìm kiếm tra cứu các tuyến xe buýt</Text>
+        <Text style={{color: 'black', fontSize: 30, textAlign: 'center', fontWeight: 'bold', marginTop: 0, marginBottom: 5, marginLeft: 20, marginRight: 20}}>eBus rất tiện lợi và dễ sử dụng</Text>
+        <Text style={{color: 'black', fontSize: 15, textAlign: 'center', marginTop: 0, marginBottom: 0, marginLeft: 40, marginRight: 40}}>Có rất nhiều tính năng để bạn khám phá như đặt vé, thanh toán trực tuyến, minigame, ...</Text>
         <View style={styles.view_circle}>
-          <View style={styles.circle1}><Text>1</Text></View>
-          <View style={styles.circle}><Text>2</Text></View>
+          <View style={styles.circle}><Text>1</Text></View>
+          <View style={styles.circle1}><Text>2</Text></View>
           <View style={styles.circle}><Text>3</Text></View>
         </View>
       </View>
       <View style={{flex: 1, alignItems: 'center', width: '100%'}}>
         <TouchableHighlight 
-          onPress={() => props.onNavigate(RootScreens.WELCOME1)}
+          onPress={() => props.onNavigate(RootScreens.WELCOME2)}
           style = {{borderWidth: 1, flexDirection: 'row', alignItems: 'center', width: '80%', justifyContent: 'center', boxShadow: '0px 1px 2px rgba(16, 24, 40, 0.05)', backgroundColor: '#50A458', marginTop: -30, marginBottom: 10, paddingTop: 10, paddingBottom: 10, borderRadius: 10}}
         >
           <Text style = {{color: 'white', fontSize: 15}}>Next</Text>
