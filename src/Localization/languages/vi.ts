@@ -22,4 +22,6 @@ export const vi = {
   [LocalizationKey.TICKETINFO]: "Thông tin vé xe buýt",
   [LocalizationKey.PAY]: "Thanh toán",
   [LocalizationKey.OTHERPAYMENT]: "Hình thức thanh toán khác",
+  [LocalizationKey.FIND]: "Tìm",
+
 };

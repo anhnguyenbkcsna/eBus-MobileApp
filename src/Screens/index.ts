@@ -10,5 +10,6 @@ export enum RootScreens {
   ACCOUNT_NOT_LOGIN = "AccountNotLogin",
   ACCOUNT_DETAIL = "AccountDetail",
   REPORT = "Report",
-  REPORT_RESULT = "ReportResult"
+  REPORT_RESULT = "ReportResult",
+  ROUTE = "Route"
 }

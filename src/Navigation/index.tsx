@@ -9,6 +9,7 @@ import { LoginContainer } from "@/Screens/Login";
 import { PickContainer } from "@/Screens/Booking";
 import { AccountContainer, AccountNotLoginContainer, AccountDetailContainer, ReportContainer, ReportResultContainer } from "@/Screens/Account";
 import { HomeContainer } from "@/Screens/Home";
+import { RouteContainer } from "@/Screens/Route";
 
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   [RootScreens.ACCOUNT_DETAIL]: undefined;
   [RootScreens.REPORT]: undefined;
   [RootScreens.REPORT_RESULT]: undefined;
+  [RootScreens.ROUTE]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -63,6 +65,11 @@ const ApplicationNavigator = () => {
         <RootStack.Screen
           name={RootScreens.REPORT_RESULT}
           component={ReportResultContainer}
+        />
+
+        <RootStack.Screen
+          name={RootScreens.ROUTE}
+          component={RouteContainer}
         />
       </RootStack.Navigator>
     </NavigationContainer>

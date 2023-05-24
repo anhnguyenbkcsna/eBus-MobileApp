@@ -10,6 +10,12 @@ import MapView from 'react-native-maps';
 
 
 export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
+  const pos = {
+		lat: 10.87973,
+		long: 106.80594,
+		latDelta: 0.001,
+		longDelta: 0.02,
+	}
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -46,7 +52,17 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             />
           </View>
           <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
-            <MapView style={{width: '100%', height: '100%', borderRadius: 15}} />
+            {/* <MapView style={{width: '100%', height: '100%', borderRadius: 15}} /> */}
+            <MapView
+              style={styles.map}
+              showsUserLocation
+              region={{
+                latitude: pos.lat,
+                longitude: pos.long,
+                latitudeDelta: pos.latDelta,
+                longitudeDelta: pos.longDelta,
+              }}
+            />
           </View>
       </View>
 
