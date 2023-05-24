@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     icon: {
         width: 30,
         marginHorizontal: 5,
-        backgroundColor: 'red',
     },
     mainText: {
         color: Colors.PRIMARY,

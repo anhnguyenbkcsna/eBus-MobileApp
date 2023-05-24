@@ -12,7 +12,7 @@ import { PickEnd } from "./PickEnd";
 import { PickBusLine } from "./PickBusLine";
 
 export const PickContainer = ({screen}) => {
-    const [defaultScreen, setDefaultScreen] = useState('end')
+    const [defaultScreen, setDefaultScreen] = useState('start')
     const [search, setSearch] = useState('')
     const [select, setSelect] = useState('')
       

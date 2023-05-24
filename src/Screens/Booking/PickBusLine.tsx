@@ -11,26 +11,32 @@ export const PickBusLine = () => {
         {
           id: 'Tuyến xe buýt số 1',
           title: 'First Item',
+          price: '3000đ - 7000đ',
         },
         {
           id: 'Tuyến xe buýt số 2',
           title: 'Second Item',
+          price: '5000đ - 10000đ',
         },
         {
           id: 'Tuyến xe buýt số 3',
           title: 'Third Item',
+          price: '3000đ - 19000đ',
         },
         {
           id: 'Tuyến xe buýt số 4',
           title: 'Third Item',
+          price: '5000đ - 13000đ',
         },
         {
           id: 'Tuyến xe buýt số 5',
           title: 'Third Item',
+          price: '7000đ - 12000đ',
         },
         {
           id: 'Tuyến xe buýt số 6',
           title: 'Third Item',
+          price: '6000đ - 20000đ',
         },
     ];
     return (
@@ -48,6 +54,7 @@ export const PickBusLine = () => {
                         <View style={{padding: 5}}>
                             <Text style={styles.mainText}>{item.id}</Text>
                             <Text style={styles.subText}>{item.title}</Text>
+                            <Text style={styles.priceText}>{item.price}</Text>
                         </View>
                     </>
                 </TouchableOpacity>
@@ -76,7 +83,8 @@ const styles = StyleSheet.create({
         color: Colors.PRIMARY,
         fontWeight: 'bold',
     },
-    subText: {
-
+    subText: {},
+    priceText: {
+        color: Colors.PRIMARY,
     }
 })
