@@ -1,82 +1,124 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { i18n, LocalizationKey } from "@/Localization";
-import { View, Text, StyleSheet, Image, TextInput, ImageBackground, Button } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpacity, Dimensions } from "react-native";
 import { Colors, FontSize } from "@/Theme/Variables";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapView, { Marker } from 'react-native-maps';
+import { GooglePlaceDetail, GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapViewDirections from "react-native-maps-directions";
+import { position } from "native-base/lib/typescript/theme/styled-system";
 
+type InputAutocompleteProps = {
+	placeholder: string,
+	onPlaceSelected: (details: GooglePlaceDetail | null) => void;
+}
+const InputAutocomplete = ({ 
+	placeholder, 
+	onPlaceSelected 
+}: InputAutocompleteProps) => {
+	return <GooglePlacesAutocomplete
+		style={styles.formInput}
+		placeholder="Nhập địa điểm"
+		fetchDetails
+		returnKeyTypes={'search'}
+		minLength={2}
+		enablePoweredByContainer={false}
+		query={{
+			key: "AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE",
+			language: 'en',
+		}}
+		onPress={(data, details = null) => {
+			onPlaceSelected(details)
+		}}
+		nearbyPlacesAPI="GooglePlacesSearch"
+		debounce={400}
+	/>
+}
 export const RouteContainer = () => {
-    const REACT_APP_GOOGLE_MAPS_APIKEY = "AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE";
-    const [startPos, setStartPos] = useState()
-    const [endPos, setEndPos] = useState()
-    const [start, setStart] = useState('')
+    // const REACT_APP_GOOGLE_MAPS_APIKEY = "AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE";
+	const { width, height } = Dimensions.get('window');
+	const ASPECT_RATIO = width / height;
+	const LATITUDE_DELTA = 0.0922;
+	const LONGITUDE_DELTA = LATITUDE_DELTA * (16/9);
 
-	const pos = {
-		lat: 10.87973,
-		long: 106.80594,
-		latDelta: 0.001,
-		longDelta: 0.02,
-	}
+	const INITIAL_POSITION = {
+		latitude: 10.87973,
+		longitude: 106.80594,
+		latitudeDelta: LATITUDE_DELTA,
+		longitudeDelta: LONGITUDE_DELTA,
+	};
 	
+	const [origin, setOrigin] = useState<LatLng | null>()
+	const [destination, setDestination] = useState<LatLng | null>()
+	const [show, setShow] = useState(false)
+
+	const mapRef = useRef<MapView>(null)
+
+	const moveTo = async (position: LatLng) => {
+		const camera = await mapRef.current?.getCamera()
+		if(camera) {
+			camera.center = position;
+			mapRef.current?.animateCamera(camera, {duration: 1000})
+		}
+	}
+	const onPlaceSelected = (
+		details: GooglePlaceDetail | null,
+		flag: 'origin' | 'destination'
+	) => {
+		const set = flag === 'origin' ? setOrigin : setDestination
+		const position = {
+			latitude: details?.geometry.location.lat || 0,
+			longitude: details?.geometry.location.lng || 0,
+			latDelta: details?.geometry.viewport.northeast.lat - details?.geometry.viewport.southwest.lat || LATITUDE_DELTA,
+			lngDelta: (details?.geometry.viewport.northeast.lat - details?.geometry.viewport.southwest.lat) * ASPECT_RATIO,
+		}
+		set(position)
+		moveTo(position)
+	}
+
     return (
 		<View style={styles.container}>
 			<View style={styles.topmidTitle}>
 				<ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
 					<View style={styles.formContainer}>
-						<GooglePlacesAutocomplete
-							style={styles.formInput}
-							placeholder="Đi từ - Vị trí của bạn"
-							fetchDetails={true}
-							returnKeyTypes={'search'}
-							minLength={2}
-							enablePoweredByContainer={false}
-							query={{
-								key: REACT_APP_GOOGLE_MAPS_APIKEY,
-								language: 'en',
-							}}
-							// value = {start}
-							nearbyPlacesAPI="GooglePlacesSearch"
-							debounce={400}
-						/>
-						<GooglePlacesAutocomplete
-							style={styles.formInput}
-							placeholder="Đến - Nhập địa điểm đến"
-							fetchDetails={true}
-							returnKeyTypes={'search'}
-							minLength={2}
-							enablePoweredByContainer={false}
-							query={{
-								key: REACT_APP_GOOGLE_MAPS_APIKEY,
-								language: 'en',
-							}}
-							nearbyPlacesAPI="GooglePlacesSearch"
-							debounce={400}
-						/>
+						<InputAutocomplete label="origin" onPlaceSelected={(details) => {
+							onPlaceSelected(details, "origin")
+						}} />
+						<InputAutocomplete label="destination" onPlaceSelected={(details) => {
+							onPlaceSelected(details, "destination")
+						}} />
 					</View>
-					<View style={styles.btnContainer}>
-						<Button style={styles.btn} title={i18n.t(LocalizationKey.FIND)} color={Colors.WHITE}/>
-					</View>
+					{/* <View style={styles.btnContainer}>
+						<TouchableOpacity style={styles.btn} onPress={() => setShow(true)}>
+							<Text style={styles.btnText}>
+								{i18n.t(LocalizationKey.FIND)}
+							</Text>
+						</TouchableOpacity>
+					</View> */}
 				</ImageBackground>
-				
+				{/* <MapViewDirections 
+					origin={}
+					destination={}
+					apikey={REACT_APP_GOOGLE_MAPS_APIKEY}
+					strokeColor={Colors.PRIMARY}
+					strokeWidth={3}
+				/> */}
 				<MapView
 					style={styles.map}
 					showsUserLocation
-					region={{
-						latitude: pos.lat,
-						longitude: pos.long,
-						latitudeDelta: pos.latDelta,
-						longitudeDelta: pos.longDelta,
-					}}
+					provider={ PROVIDER_GOOGLE }
+					ref={mapRef}
+					initialRegion={INITIAL_POSITION}
 				>
-					{start && <Marker 
-						coordinate={{
-							latitude: pos.lat,
-							longitude: pos.long,
-							latitudeDelta: pos.latDelta,
-							longitudeDelta: pos.longDelta,
-						}}
-						title = 'Start'
-						identifier="Start"
+					{origin && <Marker coordinate={origin} />}
+					{destination && <Marker coordinate={destination} />}
+
+					{origin && destination && <MapViewDirections
+						origin={origin}
+						destination={destination}
+						apikey="AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE"
+						strokeColor={Colors.PRIMARY}
+						strokeWidth={4}
+						// onReady={traceRouteOnReady}
 					/>}
 				</MapView>
 			</View>
@@ -95,17 +137,16 @@ const styles = StyleSheet.create({
     },
 	formContainer: {
 		position: 'absolute',
-		// backgroundColor: Colors.PRIMARY,
-		width: '85%',
+		width: '100%',
 		minHeight: '15%',
-		paddingTop: '10%',
-		padding: 10,
+		top: '20%',
+		paddingHorizontal: 10,
+		overflow: 'visible',
 	},
-	formInput: {
-		maxWidth: '10%',
-	},
-	btnContainer: {
-		position: 'absolute',
+	// formInput: {
+	// 	marginVertical: 10,
+	// },
+	btn: {
 		right: '3%',
 		alignItems: 'right',
 		backgroundColor: Colors.PRIMARY,
@@ -118,3 +159,5 @@ const styles = StyleSheet.create({
 		elevation: -1, // works on android
 	},
 })
+// quá trầm cảm với maps .-. anhnguyen
+// Thanks for https://www.youtube.com/watch?v=Wq3dO05jv6o&ab_channel=FabioBergmann
