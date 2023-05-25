@@ -2,17 +2,13 @@ import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
 import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard, TouchableHighlight} from "react-native";
 import {Box, TextArea} from 'native-base';
-import { Searchbar } from 'react-native-paper';
-import { StatusBar } from "expo-status-bar";
-import { HStack, Spinner, Heading } from "native-base";
-import { User } from "@/Services";
 import { Ionicons } from '@expo/vector-icons';
 import { RootScreens } from "..";
 
 
 export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <View style={styles.header}>
           <ImageBackground
@@ -33,7 +29,7 @@ export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => 
       </View>
 
       <View style={styles.user}>
-            <TextArea false h = '130%' w='90%' placeholder="Nhập nội dung góp ý tại đây!" style={{fontSize: 15, borderRadius: 5,borderWidth: 0, backgroundColor: 'white', width: '100%', height: '100%'}}/>
+            <TextArea h = '130%' w='90%' placeholder="Nhập nội dung góp ý tại đây!" style={{fontSize: 15, borderRadius: 5,borderWidth: 0, backgroundColor: 'white', width: '100%', height: '100%'}}/>
       </View>
 
       <View style={styles.grid}>
@@ -42,37 +38,13 @@ export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => 
                 onPress={() => props.onNavigate(RootScreens.REPORT_RESULT)}
                 style = {{marginBottom: '3%', borderWidth: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#50A458', width: '80%', borderRadius: 5, paddingTop: 15, paddingBottom: 15}}
             >
-                            <Text style = {{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Gửi</Text>
+                <Text style = {{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Gửi</Text>
             </TouchableOpacity>
         </View>
     </View>
     </TouchableWithoutFeedback>
   )
 };
-
-// export const Home1 = (props: IHomeProps) => {
-//   const { data, isLoading } = props;
-//   return (
-//     <View style={styles.container}>
-//       <StatusBar style="auto" />
-//       {isLoading ? (
-//         <HStack space={2} justifyContent="center">
-//           <Spinner accessibilityLabel="Loading posts" />
-//           <Heading color="primary.500" fontSize="md">
-//             {i18n.t(LocalizationKey.LOADING)}
-//           </Heading>
-//         </HStack>
-//       ) : (
-//         <>
-//           <Text>{i18n.t(LocalizationKey.HOME)}</Text>
-//           <Heading color="primary.500" fontSize="md">
-//             {data?.username}
-//           </Heading>
-//         </>
-//       )}
-//     </View>
-//   );
-// };
 
 const styles = StyleSheet.create({
   container: {

@@ -71,20 +71,22 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: '-7%'}}
             onPress={() => props.onNavigate(RootScreens.ROUTE)}
           >
-              <Searchbar                
-                placeholder="Tìm kiếm địa điểm"
-                style={{width: '95%', 
-                        borderRadius: 10, 
-                        backgroundColor: 'white',
+            <View style={{width: '95%', 
+                        borderRadius: 50, 
                         shadowColor: 'black',
                         shadowOpacity: 0.3,
                         shadowOffset: { width: 0, height: 2 },
-                        shadowRadius: 10,
-                        elevation: 5}}
+                        shadowRadius: 15,
+                        elevation: 5}}>
+
+              <Searchbar                
+                placeholder="Tìm kiếm địa điểm"
+                style={{backgroundColor: 'white'}}
               />
+            </View>
             
           </TouchableOpacity>
-          <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
+          <View style={{flex: 3, borderWidth: 1, borderRadius: 0, marginTop: '5%'}}>
             {/* <MapView style={{width: '100%', height: '100%', borderRadius: 15}} /> */}
             <MapView
               style={styles.map}

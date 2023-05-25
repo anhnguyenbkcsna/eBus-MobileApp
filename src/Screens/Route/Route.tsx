@@ -110,8 +110,8 @@ export const Route = (props: {onNavigate: (string: RootScreens) => void; }) => {
 				<ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
 					<View style={{marginLeft: '2%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
 						<Ionicons 
-							onPress={() => props.onNavigate(RootScreens.PICK_START)}
-							style={{fontSize: 30, color: 'white', backgroundColor: 'black'}} 
+							onPress={() => props.onNavigate(RootScreens.MAIN)}
+							style={{fontSize: 30, color: 'white'}} 
 							name="arrow-back-outline"
 						/>
 					</View>
