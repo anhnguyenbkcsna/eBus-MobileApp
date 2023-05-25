@@ -19,16 +19,8 @@ import { Colors, FontSize } from "@/Theme/Variables";
 //   RootScreens.LOGIN
 // >;
 
-export const LoginContainer = () => {
-  const [isLogin, setIsLogin] = useState(true);
-
-  const handleSetLogin = () => {
-    if(isLogin){
-      setIsLogin(false)
-    }
-    else setIsLogin(true)
-  }
-
+export const LoginContainer = (value) => {
+  const [isLogin, setIsLogin] = useState(true)
   return (
     <View style={styles.container}>
       <ImageBackground source={isLogin ? LoginBg : SignupBg} resizeMode="cover" style={styles.container}>
@@ -43,12 +35,12 @@ export const LoginContainer = () => {
 
       {isLogin ? 
         <View style={styles.btnContainer}>
-          <Button style={styles.activebtn} onPress={handleSetLogin} >
+          <Button style={styles.activebtn} onPress={() => setIsLogin(true)} >
             <Text style={styles.activetextbtn}>
               {i18n.t(LocalizationKey.LOGIN)}
             </Text>
           </Button>
-          <Button style={styles.btn} onPress={handleSetLogin} >
+          <Button style={styles.btn} onPress={() => setIsLogin(false)} >
             <Text style={styles.textbtn}>
               {i18n.t(LocalizationKey.SIGNUP)}
             </Text>
@@ -56,12 +48,12 @@ export const LoginContainer = () => {
         </View>
       : 
         <View style={styles.btnContainer}>
-          <Button style={styles.btn} onPress={handleSetLogin} >
+          <Button style={styles.btn} onPress={() => setIsLogin(true)} >
             <Text style={styles.textbtn}>
               {i18n.t(LocalizationKey.LOGIN)}
             </Text>
           </Button>
-          <Button style={styles.activebtn} onPress={handleSetLogin} >
+          <Button style={styles.activebtn} onPress={() => setIsLogin(false)} >
             <Text style={styles.activetextbtn}>
               {i18n.t(LocalizationKey.SIGNUP)}
             </Text>
@@ -81,7 +73,7 @@ export const LoginContainer = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // width: "100%",
+    width: "100%",
     // height: "100%",
     alignItems: "center",
     justifyContent: "center",
@@ -149,6 +141,6 @@ const styles = StyleSheet.create({
     minWidth: "90%",
     maxHeight: "60%",
     backgroundColor: Colors.TERTIARY,
-    borderRadius: "25px",
+    borderRadius: 25,
   }
 });
