@@ -49,7 +49,7 @@ export const MainNavigator = () => {
           <Tab.Screen name="Home" component={HomeContainer} />
           <Tab.Screen name="Bus" component={HomeContainer} />
           <Tab.Screen name="Notification" component={HomeContainer} />
-          <Tab.Screen name="Account" component={AccountContainer} />
+          <Tab.Screen name="Account" component={AccountNotLoginContainer} />
     </Tab.Navigator>
   );
 };

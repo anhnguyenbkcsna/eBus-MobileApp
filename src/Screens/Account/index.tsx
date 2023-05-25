@@ -4,6 +4,7 @@ import { AccountDetail} from "./AccountDetail";
 import { AccountNotLogin} from "./AccountNotLogin";
 import { Report} from "./Report";
 import { ReportResult} from "./ReportResult";
+import { Hotline} from "./Hotline";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/Navigation";
 import { RootScreens } from "..";
@@ -65,4 +66,14 @@ export const ReportResultContainer = ({
   };
 
   return <ReportResult onNavigate={onNavigate} />;
+};
+
+export const HotlineContainer = ({
+  navigation,
+}: AccountNavigatorProps) => {
+  const onNavigate = (screen: RootScreens) => {
+    navigation.navigate(screen);
+  };
+
+  return <Hotline onNavigate={onNavigate} />;
 };

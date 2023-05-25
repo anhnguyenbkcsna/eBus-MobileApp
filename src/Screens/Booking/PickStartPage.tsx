@@ -13,7 +13,7 @@ import { PickEnd } from "./PickEnd";
 import { PickBusLine } from "./PickBusLine";
 import { RootScreens } from "..";
 
-export const PickStartPage = () => {
+export const PickStartPage = (props: {onNavigate: (string: RootScreens) => void; }) => {
     
     const [search, setSearch] = useState('')
     const [select, setSelect] = useState('')
@@ -40,7 +40,7 @@ export const PickStartPage = () => {
             </View>
 
             <View style={styles.list}>
-                <PickStart />
+                <PickStart onNavigate={props.onNavigate}/>
             </View>
         </View>
     )

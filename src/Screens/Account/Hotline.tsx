@@ -1,7 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard} from "react-native";
-import {Box, TextArea} from 'native-base';
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TextI} from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
@@ -10,9 +9,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { RootScreens } from "..";
 
 
-export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => {
+export const Hotline = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
       <View style={styles.header}>
           <ImageBackground
@@ -21,32 +19,36 @@ export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => 
             style = {{width: '100%', height: '100%'}}
           >
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center',alignItems: 'center', marginBottom: '-30%'}}>
-                <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Góp ý</Text>
+                <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Tổng đài</Text>
             </View>
             <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
                 <Ionicons 
                     style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
-                    onPress={() => props.onNavigate(RootScreens.ACCOUNT)}
+                    onPress={() => props.onNavigate(RootScreens.MAIN)}
                 />
             </View>
           </ImageBackground>  
       </View>
 
       <View style={styles.user}>
-            <TextArea false h = '130%' w='90%' placeholder="Nhập nội dung góp ý tại đây!" style={{fontSize: 15, borderRadius: 5,borderWidth: 0, backgroundColor: 'white', width: '100%', height: '100%'}}/>
+          <Text 
+            style={{color: 'black', width: '50%', textAlign: 'center', fontSize: 20}}
+          >
+            Hotline: 1900 1009. 
+          </Text>
+          <Text 
+            style={{color: 'black', width: '70%', textAlign: 'center', fontSize: 20, marginBottom: '5%'}}
+          >
+            Hãy gọi cho chúng tôi nếu bạn cần trợ giúp.
+          </Text>
+          <TouchableOpacity 
+              style = {{marginBottom: '3%', borderWidth: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#50A458', width: '80%', borderRadius: 5, paddingTop: 15, paddingBottom: 15}}
+              onPress={() => props.onNavigate(RootScreens.MAIN)}
+          >
+              <Text style = {{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Quay lại</Text>
+          </TouchableOpacity>
       </View>
-
-      <View style={styles.grid}>
-            <Text style={{color: '#646464', width: '80%', textAlign: 'vertical', fontSize: 13, marginBottom: '5%'}}>Chúng tôi sẽ xem xét và xử lý góp ý của bạn và trả lời bạn sớm nhất có thể. Những góp ý của bạn sẽ giúp chúng tôi cải thiện chất lượng dịch vụ của mình. Xin chân thành cảm ơn!</Text>
-            <TouchableOpacity 
-                onPress={() => props.onNavigate(RootScreens.REPORT_RESULT)}
-                style = {{marginBottom: '3%', borderWidth: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#50A458', width: '80%', borderRadius: 5, paddingTop: 15, paddingBottom: 15}}
-            >
-                            <Text style = {{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Gửi</Text>
-            </TouchableOpacity>
-        </View>
     </View>
-    </TouchableWithoutFeedback>
   )
 };
 
@@ -82,28 +84,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    flex: 1,
+    flex: 2,
     width: '100%',
     height: '100%',
     paddingTop: 0,
     marginTop: 0,
   },
   user: {
-    flex: 3,
+    flex: 9,
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20
-  },
-
-  grid: {
-    flex: 2,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
-    marginBottom: '10%',
+    justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    marginTop: '5%'
-  }
+  },
 
 });
