@@ -26,7 +26,7 @@ export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => 
             <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
                 <Ionicons 
                     style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
-                    onPress={() => props.onNavigate(RootScreens.ACCOUNT)}
+                    onPress={() => props.onNavigate(RootScreens.MAIN)}
                 />
             </View>
           </ImageBackground>  

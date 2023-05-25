@@ -38,7 +38,7 @@ export const ReportResult = (props: {onNavigate: (string: RootScreens) => void; 
           </Text>
           <TouchableOpacity 
               style = {{marginBottom: '3%', borderWidth: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#50A458', width: '80%', borderRadius: 5, paddingTop: 15, paddingBottom: 15}}
-              onPress={() => props.onNavigate(RootScreens.ACCOUNT)}
+              onPress={() => props.onNavigate(RootScreens.MAIN)}
           >
               <Text style = {{color: 'white', fontSize: 15, fontWeight: 'bold'}}>Quay lại</Text>
           </TouchableOpacity>

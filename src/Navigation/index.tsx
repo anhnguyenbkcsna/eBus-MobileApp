@@ -8,8 +8,13 @@ import { RootScreens } from "@/Screens";
 import { LoginContainer } from "@/Screens/Login";
 import { AccountContainer, AccountNotLoginContainer, AccountDetailContainer, ReportContainer, ReportResultContainer, HotlineContainer } from "@/Screens/Account";
 import { PickStartContainer, PickEndContainer, PickBuslineContainer, BusBookingContainer, TicketInfoContainer} from "@/Screens/Booking";
+import { HistoryContainer } from "@/Screens/History";
 import { HomeContainer } from "@/Screens/Home";
-import { Route, RouteContainer } from "@/Screens/Route";
+import { RouteContainer } from "@/Screens/Route";
+import { BusContainer } from "@/Screens/Bus";
+import { SearchContainer } from "@/Screens/Search";
+
+
 
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
@@ -29,6 +34,9 @@ export type RootStackParamList = {
   [RootScreens.HOTLINE]: undefined;
   [RootScreens.ROUTE]: undefined;
   [RootScreens.TICKET_INFO]: undefined;
+  [RootScreens.HISTORY]: undefined;
+  [RootScreens.BUS]: undefined;
+  [RootScreens.SEARCH]: undefined; 
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -101,8 +109,20 @@ const ApplicationNavigator = () => {
           component={HotlineContainer}
         />
         <RootStack.Screen
+          name={RootScreens.HISTORY}
+          component={HistoryContainer}
+        />
+        <RootStack.Screen
           name={RootScreens.ROUTE}
-          component={Route}
+          component={RouteContainer}
+        />
+        <RootStack.Screen
+          name={RootScreens.BUS}
+          component={BusContainer}
+        />
+        <RootStack.Screen
+          name={RootScreens.SEARCH}
+          component={SearchContainer}
         />
       </RootStack.Navigator>
     </NavigationContainer>
