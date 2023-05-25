@@ -45,6 +45,7 @@ export const Signup = () => {
         />
         <TextInput
           style={styles.input}
+          secureTextEntry
           onChangeText={setPassword}
           value={password}
           placeholder={i18n.t(LocalizationKey.PASSWORD)}
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     margin: 8,
-    borderRadius: "50%",
+    borderRadius: 50,
     backgroundColor: "#FFFFFF"
   } 
 });
