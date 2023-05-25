@@ -30,7 +30,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, TextInput, View, Image, Button, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, Button, TouchableOpacity } from 'react-native';
 import { RootScreens } from "..";
 
 export const Welcome2 = (props: {onNavigate: (string: RootScreens) => void; }) => {
@@ -58,19 +58,19 @@ export const Welcome2 = (props: {onNavigate: (string: RootScreens) => void; }) =
         </View>
       </View>
       <View style={{flex: 1, alignItems: 'center', width: '100%'}}>
-        <TouchableHighlight 
+        <TouchableOpacity 
           onPress={() => props.onNavigate(RootScreens.MAIN)}
           style = {{borderWidth: 1, flexDirection: 'row', alignItems: 'center', width: '80%', justifyContent: 'center', boxShadow: '0px 1px 2px rgba(16, 24, 40, 0.05)', backgroundColor: '#50A458', marginTop: -30, marginBottom: 10, paddingTop: 10, paddingBottom: 10, borderRadius: 10}}
         >
           <Text style = {{color: 'white', fontSize: 15}}>Next</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
 
-        <TouchableHighlight 
+        <TouchableOpacity 
           onPress={() => props.onNavigate(RootScreens.MAIN)}
           style = {{borderWidth: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#DEFFDD', width: '80%', paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, borderRadius: 10}}
         >
           <Text style = {{color: '#50A458', fontSize: 15}}>Skip</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   )

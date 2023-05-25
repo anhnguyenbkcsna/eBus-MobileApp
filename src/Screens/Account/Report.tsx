@@ -1,6 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard} from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard, TouchableHighlight} from "react-native";
 import {Box, TextArea} from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { RootScreens } from "..";

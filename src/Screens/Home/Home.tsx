@@ -1,15 +1,21 @@
 import { i18n, LocalizationKey } from "@/Localization";
-import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, Button } from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
 import { RootScreens } from "..";
 import MapView from 'react-native-maps';
+import Modal from "react-native-modal";
+import { Colors, FontSize } from "@/Theme/Variables";
 
 
 export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
+  const [isModalVisible, setModalVisible] = useState(false)
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   const pos = {
 		lat: 10.87773,
 		long: 106.801594,
@@ -18,6 +24,29 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
 	}
   return (
     <View style={styles.container}>
+      <Modal isVisible={isModalVisible}>
+        <View style={{ flex: 1, backgroundColor: Colors.TERTIARY, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
+          <Image resizeMode="contain" source={require('../../Assets/eBus.png')} alt='eBus' style={{width: '70%'}}/>
+          <Text style={{fontSize: FontSize.TITLE, marginBottom: '20%', color: Colors.TEXT}}>Tính năng đang phát triển</Text>
+            <TouchableOpacity
+            style={{
+              backgroundColor: Colors.PRIMARY,
+              width: '20%',
+              height: 50,
+              borderRadius: 5,
+              justifyContent: 'center'
+            }}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text style={{
+              color: Colors.WHITE,
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: FontSize.REGULAR,
+            }}>Ẩn</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
       <View style={styles.header}>
           <ImageBackground
             source={require('../../../assets/Resources/top_bar.png')}
@@ -42,20 +71,22 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: '-7%'}}
             onPress={() => props.onNavigate(RootScreens.ROUTE)}
           >
-              <Searchbar                
-                placeholder="Tìm kiếm địa điểm"
-                style={{width: '95%', 
-                        borderRadius: 10, 
-                        backgroundColor: 'white',
+            <View style={{width: '95%', 
+                        borderRadius: 50, 
                         shadowColor: 'black',
                         shadowOpacity: 0.3,
                         shadowOffset: { width: 0, height: 2 },
-                        shadowRadius: 10,
-                        elevation: 5}}
+                        shadowRadius: 15,
+                        elevation: 5}}>
+
+              <Searchbar                
+                placeholder="Tìm kiếm địa điểm"
+                style={{backgroundColor: 'white'}}
               />
+            </View>
             
           </TouchableOpacity>
-          <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
+          <View style={{flex: 3, borderWidth: 1, borderRadius: 0, marginTop: '5%'}}>
             {/* <MapView style={{width: '100%', height: '100%', borderRadius: 15}} /> */}
             <MapView
               style={styles.map}
@@ -180,7 +211,9 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => setModalVisible(true)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Gameconsole.png')} 
                   style = {{height: 55, width: 55}}        
@@ -194,7 +227,10 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity 
+                style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => setModalVisible(true)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Sun.png')} 
                   style = {{height: 55, width: 55}}        

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { i18n, LocalizationKey } from "@/Localization";
-import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpacity, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpacity, Dimensions, Button } from "react-native";
 import { Colors, FontSize } from "@/Theme/Variables";
 import { GooglePlaceDetail, GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
@@ -8,7 +8,7 @@ import MapViewDirections from "react-native-maps-directions";
 import { Ionicons } from '@expo/vector-icons';
 import { position } from "native-base/lib/typescript/theme/styled-system";
 import { RootScreens } from "..";
-
+import Modal from "react-native-modal";
 type InputAutocompleteProps = {
 	onPlaceSelected: (details: GooglePlaceDetail | null) => void;
 	placeholder: string;
@@ -76,9 +76,36 @@ export const Route = (props: {onNavigate: (string: RootScreens) => void; }) => {
 		set(position)
 		moveTo(position)
 	}
+	const [isModalVisible, setModalVisible] = useState(false)
+	const toggleModal = () => {
+	  setModalVisible(!isModalVisible);
+	};
 
     return (
 		<View style={styles.container}>
+			<Modal isVisible={isModalVisible}>
+				<View style={{ flex: 1, backgroundColor: Colors.TERTIARY, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
+				<Image resizeMode="contain" source={require('../../Assets/eBus.png')} alt='eBus' style={{width: '70%'}}/>
+				<Text style={{fontSize: FontSize.TITLE, marginBottom: '20%', color: Colors.TEXT}}>Tính năng đang phát triển</Text>
+				<TouchableOpacity
+					style={{
+						backgroundColor: Colors.PRIMARY,
+						width: '20%',
+						height: 50,
+						borderRadius: 5,
+						justifyContent: 'center'
+					}}
+					onPress={() => setModalVisible(false)}
+				>
+					<Text style={{
+						color: Colors.WHITE,
+						textAlign: 'center',
+						fontWeight: 'bold',
+						fontSize: FontSize.REGULAR,
+					}}>Ẩn</Text>
+				</TouchableOpacity>
+				</View>
+			</Modal>
 			<View style={styles.topmidTitle}>
 				<ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
 					<View style={{marginLeft: '2%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
@@ -96,6 +123,31 @@ export const Route = (props: {onNavigate: (string: RootScreens) => void; }) => {
 							onPlaceSelected(details, "destination")
 						}} />
 					</View>
+					<TouchableOpacity
+						style={{
+							marginRight: 5,
+							backgroundColor: Colors.PRIMARY,
+							width: 50,
+							height: 50,
+							justifyContent: 'center',
+							alignContent: 'center',
+							borderRadius: 5,
+						}}
+						onPress={() => setModalVisible(true)}
+
+					>
+						<Text style={{
+							color: Colors.WHITE,
+							fontWeight: 'bold',
+							textAlign: 'center'
+						}}>
+							{i18n.t(LocalizationKey.FIND)}
+						</Text>
+					</TouchableOpacity>
+						{/* <Ionicons 
+							style={{fontSize: 30, color: 'white', backgroundColor: 'black'}} name="arrow-back-outline"
+							onPress={() => props.onNavigate(RootScreens.MAIN)}
+						/> */}
 					{/* <View style={styles.btnContainer}>
 						<TouchableOpacity style={styles.btn} onPress={() => setShow(true)}>
 							<Text style={styles.btnText}>
@@ -141,12 +193,12 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
         width: "100%",
         minHeight: '20%',
-		flex: 2,
+		flex: 3,
         flexDirection: 'row',
     },
 	formContainer: {
 		position: 'absolute',
-		width: '100%',
+		width: '95%',
 		minHeight: '15%',
 		top: '20%',
 		paddingHorizontal: 10,
