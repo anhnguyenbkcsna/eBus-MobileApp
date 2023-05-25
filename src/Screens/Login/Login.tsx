@@ -4,10 +4,15 @@ import { View, Text, StyleSheet, Image, TextInput } from "react-native";
 // import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading, Button } from "native-base";
 // import { User } from "@/Services";
+import axios from "axios"
+import { RootScreens } from "..";
+import {Alert} from "react-native"
+
+const BASE_URL = "https://backendebus-production.up.railway.app/"
 
 import { Colors } from "@/Theme/Variables";
 
-export const Login = () => {
+export const Login = (props: {onNavigate: (string: RootScreens) => void; }) => {
 //   const { data, isLoading } = props;
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -35,7 +40,32 @@ export const Login = () => {
           {i18n.t(LocalizationKey.FORGOTPASSWORD)}
         </Text>
         
-        <Button style={styles.submitBtn} >
+        <Button style={styles.submitBtn} 
+                onPress={()=>{
+                  let success = false
+                  axios.post(BASE_URL + "auth/login", {
+                    'username': username,
+                    'password': password
+                  }).then(res => {
+                    console.log(res.data)
+                    if ("accessToken" in res.data) {
+                      console.log("Login success")
+                      const access_token = res.data.access_token
+                      global.access_token = access_token
+                      global.username = username
+                      success = true
+                      //navigate to main
+                      
+                    }
+                  }).catch(err => {
+                    console.log(err)
+                    const message = "Login failed"
+                    Alert.alert(message)
+                  })
+                  if (success) {
+                    return props.onNavigate(RootScreens.MAIN)
+                  }
+                }}>
           <Text style={styles.textBtn} >
             {i18n.t(LocalizationKey.LOGIN)}
           </Text>
@@ -61,7 +91,9 @@ export const Login = () => {
 };
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+  },
   title: {
     fontWeight: "bold",
     fontSize: 20,

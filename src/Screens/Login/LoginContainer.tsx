@@ -18,9 +18,15 @@ import { Colors, FontSize } from "@/Theme/Variables";
 //   RootStackParamList,
 //   RootScreens.LOGIN
 // >;
+import { RootScreens } from "..";
 
-export const LoginContainer = (value) => {
+export const LoginContainer = ({navigation,}) => {
   const [isLogin, setIsLogin] = useState(true)
+  const onNavigate = (screen: RootScreens) => {
+    navigation.navigate(screen);
+  };
+
+
   return (
     <View style={styles.container}>
       <ImageBackground source={isLogin ? LoginBg : SignupBg} resizeMode="cover" style={styles.container}>
@@ -62,7 +68,7 @@ export const LoginContainer = (value) => {
       }
 
       <View style={styles.formContainer}>
-        {isLogin ? <Login /> : <Signup/>}
+        {isLogin ? <Login onNavigate={onNavigate}/> : <Signup/>}
       </View>
       </ImageBackground>
     </View>
