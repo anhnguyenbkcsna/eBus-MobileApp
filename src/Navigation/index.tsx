@@ -64,12 +64,12 @@ const ApplicationNavigator = () => {
           component={LoginContainer}
         />
         <RootStack.Screen
-          name={RootScreens.REPORT}
-          component={ReportContainer}
-        />
-        <RootStack.Screen
           name={RootScreens.MAIN}
           component={MainNavigator}
+        />
+        <RootStack.Screen
+          name={RootScreens.REPORT}
+          component={ReportContainer}
         />
         <RootStack.Screen
           name={RootScreens.ACCOUNT_DETAIL}
