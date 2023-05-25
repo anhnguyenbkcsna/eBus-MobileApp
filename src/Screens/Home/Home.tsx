@@ -28,7 +28,23 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
         <View style={{ flex: 1, backgroundColor: Colors.TERTIARY, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
           <Image resizeMode="contain" source={require('../../Assets/eBus.png')} alt='eBus' style={{width: '70%'}}/>
           <Text style={{fontSize: FontSize.TITLE, marginBottom: '20%', color: Colors.TEXT}}>Tính năng đang phát triển</Text>
-          <Button title="Ẩn" onPress={toggleModal} color={Colors.PRIMARY}/>
+            <TouchableOpacity
+            style={{
+              backgroundColor: Colors.PRIMARY,
+              width: '20%',
+              height: 50,
+              borderRadius: 5,
+              justifyContent: 'center'
+            }}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text style={{
+              color: Colors.WHITE,
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: FontSize.REGULAR,
+            }}>Ẩn</Text>
+          </TouchableOpacity>
         </View>
       </Modal>
       <View style={styles.header}>
