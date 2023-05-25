@@ -15,6 +15,6 @@ export enum RootScreens {
   PICK_END = "PickEnd",
   PICK_BUSLINE = "PickBusline",
   BUS_BOOKING = "BusBooking",
-  HOTLINE = "Hotline"
+  HOTLINE = "Hotline",
   ROUTE = "Route"
 }
