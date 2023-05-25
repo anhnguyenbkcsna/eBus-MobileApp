@@ -19,6 +19,7 @@ export const en = {
   [LocalizationKey.CHOOSEENDPOS]: "Select end point",
   [LocalizationKey.CHOOSEDATE]: "Pick date",
   [LocalizationKey.CHOOSEBUSLINE]: "Choose bus line",
+  [LocalizationKey.NOTCHOOSEYET]: "Not choose yet",
   [LocalizationKey.TICKETINFO]: "Ticket info",
   [LocalizationKey.PAY]: "Pay",
   [LocalizationKey.OTHERPAYMENT]: "Other payment",

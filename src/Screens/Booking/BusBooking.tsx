@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpa
 import { Button, Modal } from "native-base";
 import { Colors, FontSize } from "@/Theme/Variables";
 import DatePicker from 'react-native-date-picker'
+import { Ionicons } from '@expo/vector-icons';
 import { RootScreens } from "..";
 
 import { PickDate } from "./PickDate";
@@ -18,11 +19,30 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
 
     return (
         <View style={styles.container}>
-            <View style={styles.topmidTitle}>
+            <View style={styles.header}>
+                <ImageBackground
+                    source={require('../../../assets/Resources/top_bar.png')}
+                    resizeMode="cover"
+                    style = {{width: '100%', height: '100%'}}
+                >
+                    <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center',alignItems: 'center', marginBottom: '-30%'}}>
+                        <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Đặt vé xe buýt</Text>
+                    </View>
+                    <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
+                        <Ionicons 
+                            style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
+                            onPress={() => props.onNavigate(RootScreens.MAIN)}
+                        />
+                    </View>
+                </ImageBackground>  
+            </View>
+
+        {/* <View style={styles.container}> */}
+            {/* <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
                     <Text style={styles.title}>Đặt vé xe buýt</Text>
                 </ImageBackground>
-            </View>
+            </View> */}
 
             <View style={styles.form}>
                 <TouchableOpacity  
@@ -77,20 +97,38 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
                     </>
                 </TouchableOpacity>
             </View>
-            <Button style={styles.btn}>
-                <Text style={styles.btnText}>{i18n.t(LocalizationKey.BOOK)}</Text>
-            </Button>
+            <TouchableOpacity 
+                style={styles.btn}
+                onPress={() => props.onNavigate(RootScreens.TICKET_INFO)}
+            >
+                <Text style={styles.btnText} >
+                    {i18n.t(LocalizationKey.BOOK)}
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    // container: {
+    //     backgroundColor: Colors.TERTIARY,
+    //     flex: 1,
+    //     alignItems: "center",
+    // },
     container: {
-        backgroundColor: Colors.TERTIARY,
         flex: 1,
-        height: "100%",
-        alignItems: "center",
-    },
+        backgroundColor: "#D8ECD9",
+        alignItems: 'center',
+        // justifyContent: 'center',
+      },
+      header: {
+        flex: 2,
+        width: '100%',
+        alignContent: 'center',
+        maxHeight: '15%',
+        paddingTop: 0,
+        marginTop: 0,
+      },
     bg: {
         justifyContent: "flex-end",
         paddingVertical: '5%',
@@ -108,10 +146,12 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     btn: {
-        textAlign: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '50%',
         height: '6%',
         backgroundColor: Colors.PRIMARY,
+        borderRadius: 10,
     },
     btnText: {
         color: Colors.WHITE,
@@ -122,9 +162,10 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.WHITE,
         borderRadius: 15,
         minWidth: '90%',
-        maxHeight: '35%',
+        maxHeight: '30%',
         alignItems: "left",
         marginVertical: 20,
+        paddingTop: 10,
     },
     formElement: {
         flex: 2,

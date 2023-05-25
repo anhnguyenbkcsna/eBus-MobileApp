@@ -7,7 +7,7 @@ import DatePicker from 'react-native-date-picker'
 import { RadioButton } from 'react-native-paper';
 
 import { PickDate } from "./PickDate";
-export const TicketInfo = () => {
+export const TicketInfo = (props: {onNavigate: (string: RootScreens) => void; }) => {
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState(new Date())
     const [checked, setChecked] = React.useState('momo');
@@ -33,23 +33,23 @@ export const TicketInfo = () => {
                 <TouchableOpacity  style={styles.formElement}>
                     <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
                     <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
+                        {startPos == '' ? i18n.t(LocalizationKey.NOTCHOOSEYET) : startPos}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity  style={styles.formElement}>
                     <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
                     <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
+                        {startPos == '' ? i18n.t(LocalizationKey.NOTCHOOSEYET) : endPos}
                     </Text>
                 </TouchableOpacity>
 
                 {/* <Button onPress={() => setOpen(true)} > */}
-                <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
+                {/* <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
                     <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
                     <Text style={styles.formText}>
                         {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 {/* <Modal animationType='slide' transparent={true} visible={open}>
                     <View>
@@ -61,7 +61,7 @@ export const TicketInfo = () => {
                 <TouchableOpacity  style={styles.formElement}>
                     <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
                     <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEBUSLINE) : busline}
+                        {startPos == '' ? i18n.t(LocalizationKey.NOTCHOOSEYET) : busline}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -133,8 +133,9 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.WHITE,
         borderRadius: 15,
         minWidth: '90%',
-        maxHeight: '40%',
+        maxHeight: '30%',
         marginVertical: 20,
+        paddingTop: 10,
     },
     form2: {
         flex: 1,
