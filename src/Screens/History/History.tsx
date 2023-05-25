@@ -12,30 +12,30 @@ import { Colors } from "@/Theme/Variables";
 
 export const History = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-            <ImageBackground
-                source={require('../../../assets/Resources/top_bar.png')}
-                resizeMode="cover"
-                style = {{width: '100%', height: '100%'}}
-            >
-                <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center',alignItems: 'center', marginBottom: '-30%'}}>
-                    <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Thông báo</Text>
-                </View>
-                <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
-                    <Ionicons 
-                        style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
-                        onPress={() => props.onNavigate(RootScreens.MAIN)}
-                    />
-                </View>
-            </ImageBackground>  
-        </View>
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <ImageBackground
+                    source={require('../../../assets/Resources/top_bar.png')}
+                    resizeMode="cover"
+                    style = {{width: '100%', height: '100%'}}
+                >
+                    <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center',alignItems: 'center', marginBottom: '-30%'}}>
+                        <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Thông báo</Text>
+                    </View>
+                    <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
+                        <Ionicons 
+                            style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
+                            onPress={() => props.onNavigate(RootScreens.MAIN)}
+                        />
+                    </View>
+                </ImageBackground>  
+            </View>
 
-        <View style={styles.main}>
-            <HistoryInfo onNavigate={props.onNavigate}/ >
+            <View style={styles.main}>
+                <HistoryInfo onNavigate={props.onNavigate} />
+            </View>
         </View>
-    </View>
-  )
+    )
 };
 
 const styles = StyleSheet.create({
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'left',
+        // alignItems: 'left',
         backgroundColor: Colors.WHITE,
     },
     

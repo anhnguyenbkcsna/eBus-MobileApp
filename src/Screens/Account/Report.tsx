@@ -1,6 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard} from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard, TouchableHighlight} from "react-native";
 import {Box, TextArea} from 'native-base';
 import { Searchbar } from 'react-native-paper';
 import { StatusBar } from "expo-status-bar";
@@ -37,7 +37,7 @@ export const Report = (props: {onNavigate: (string: RootScreens) => void; }) => 
       </View>
 
       <View style={styles.grid}>
-            <Text style={{color: '#646464', width: '80%', textAlign: 'vertical', fontSize: 13, marginBottom: '5%'}}>Chúng tôi sẽ xem xét và xử lý góp ý của bạn và trả lời bạn sớm nhất có thể. Những góp ý của bạn sẽ giúp chúng tôi cải thiện chất lượng dịch vụ của mình. Xin chân thành cảm ơn!</Text>
+            <Text style={{color: '#646464', width: '80%', fontSize: 13, marginBottom: '5%'}}>Chúng tôi sẽ xem xét và xử lý góp ý của bạn và trả lời bạn sớm nhất có thể. Những góp ý của bạn sẽ giúp chúng tôi cải thiện chất lượng dịch vụ của mình. Xin chân thành cảm ơn!</Text>
             <TouchableOpacity 
                 onPress={() => props.onNavigate(RootScreens.REPORT_RESULT)}
                 style = {{marginBottom: '3%', borderWidth: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#50A458', width: '80%', borderRadius: 5, paddingTop: 15, paddingBottom: 15}}

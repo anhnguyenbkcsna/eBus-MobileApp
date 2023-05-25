@@ -37,13 +37,6 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
                 </ImageBackground>  
             </View>
 
-        {/* <View style={styles.container}> */}
-            {/* <View style={styles.topmidTitle}>
-                <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <Text style={styles.title}>Đặt vé xe buýt</Text>
-                </ImageBackground>
-            </View> */}
-
             <View style={styles.form}>
                 <TouchableOpacity  
                     style={styles.formElement}
@@ -67,23 +60,6 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
                         </Text>
                     </>
                 </TouchableOpacity>
-
-                {/* <Button onPress={() => setOpen(true)} >
-                <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
-                    <>
-                        <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                        <Text style={styles.formText}>
-                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
-                        </Text>
-                    </>
-                </TouchableOpacity> */}
-
-                {/* <Modal animationType='slide' transparent={true} visible={open}>
-                    <View>
-                        <DatePicker modal open={open} date={date} display="inline"/>
-                    </View>
-                </Modal> */}
-                {/* </Button> */}
 
                 <TouchableOpacity 
                     style={styles.formElement}
@@ -163,7 +139,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         minWidth: '90%',
         maxHeight: '30%',
-        alignItems: "left",
+        // alignItems: "left",
         marginVertical: 20,
         paddingTop: 10,
     },
