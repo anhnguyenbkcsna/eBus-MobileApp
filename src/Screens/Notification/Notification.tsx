@@ -7,10 +7,10 @@ import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
 import { Ionicons } from '@expo/vector-icons';
 import { RootScreens } from "..";
-import { HistoryInfo } from "./HistoryInfo";
-import { Colors } from "@/Theme/Variables";
+import { Noti } from "./Noti";
 
-export const History = (props: {onNavigate: (string: RootScreens) => void; }) => {
+
+export const Notification = (props: {onNavigate: (string: RootScreens) => void; }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -23,16 +23,16 @@ export const History = (props: {onNavigate: (string: RootScreens) => void; }) =>
                     <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Thông báo</Text>
                 </View>
                 <View style={{marginLeft: '5%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
-                    <Ionicons 
+                    {/* <Ionicons 
                         style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
-                        onPress={() => props.onNavigate(RootScreens.MAIN)}
-                    />
+                        onPress={() => props.onNavigate(RootScreens.)}
+                    /> */}
                 </View>
             </ImageBackground>  
         </View>
 
         <View style={styles.main}>
-            <HistoryInfo onNavigate={props.onNavigate}/ >
+            <Noti />
         </View>
     </View>
   )
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor: Colors.WHITE,
     },
     
 });

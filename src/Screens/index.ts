@@ -20,5 +20,6 @@ export enum RootScreens {
   TICKET_INFO = "TicketInfo",
   HISTORY = "History",
   BUS = "Bus",
-  SEARCH = "Search"
+  SEARCH = "Search",
+  NOTIFICATION = "Notification",
 }

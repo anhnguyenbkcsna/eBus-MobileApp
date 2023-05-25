@@ -13,6 +13,7 @@ import { HomeContainer } from "@/Screens/Home";
 import { RouteContainer } from "@/Screens/Route";
 import { BusContainer } from "@/Screens/Bus";
 import { SearchContainer } from "@/Screens/Search";
+import { NotificationContainer } from "@/Screens/Notification";
 
 
 
@@ -37,6 +38,7 @@ export type RootStackParamList = {
   [RootScreens.HISTORY]: undefined;
   [RootScreens.BUS]: undefined;
   [RootScreens.SEARCH]: undefined; 
+  [RootScreens.NOTIFICATION]: undefined; 
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -119,6 +121,10 @@ const ApplicationNavigator = () => {
         <RootStack.Screen
           name={RootScreens.BUS}
           component={BusContainer}
+        />
+        <RootStack.Screen
+          name={RootScreens.NOTIFICATION}
+          component={NotificationContainer}
         />
         <RootStack.Screen
           name={RootScreens.SEARCH}

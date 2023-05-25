@@ -1,6 +1,7 @@
 import React from "react";
 
 import { HomeContainer } from "@/Screens/Home/HomeContainer";
+import { NotificationContainer } from "@/Screens/Notification";
 import { AccountContainer} from "@/Screens/Account";
 import { AccountNotLoginContainer} from "@/Screens/Account";
 import { BusContainer} from "@/Screens/Bus";
@@ -50,7 +51,7 @@ export const MainNavigator = () => {
     >
           <Tab.Screen name="Home" component={HomeContainer} />
           <Tab.Screen name="Bus" component={BusContainer} />
-          <Tab.Screen name="Notification" component={HomeContainer} />
+          <Tab.Screen name="Notification" component={NotificationContainer} />
           <Tab.Screen name="Account" component={AccountNotLoginContainer} />
     </Tab.Navigator>
   );
