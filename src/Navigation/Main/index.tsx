@@ -3,6 +3,8 @@ import React from "react";
 import { HomeContainer } from "@/Screens/Home/HomeContainer";
 import { AccountContainer} from "@/Screens/Account";
 import { AccountNotLoginContainer} from "@/Screens/Account";
+import { BusContainer} from "@/Screens/Bus";
+
 
 import { StyleSheet} from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -47,7 +49,7 @@ export const MainNavigator = () => {
           })}
     >
           <Tab.Screen name="Home" component={HomeContainer} />
-          <Tab.Screen name="Bus" component={HomeContainer} />
+          <Tab.Screen name="Bus" component={BusContainer} />
           <Tab.Screen name="Notification" component={HomeContainer} />
           <Tab.Screen name="Account" component={AccountNotLoginContainer} />
     </Tab.Navigator>

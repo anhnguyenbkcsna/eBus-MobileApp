@@ -7,11 +7,11 @@ import { Button, FlatList } from 'native-base';
 import { Colors, FontSize } from "@/Theme/Variables";
 import ListItem from "react-native-paper/lib/typescript/src/components/List/ListItem";
 
+import {BusLine} from "./BusLine";
 import { Ionicons } from '@expo/vector-icons';
-import {HistoryLine} from './HistoryLine';
 import { RootScreens } from "..";
 
-export const History = (props: {onNavigate: (string: RootScreens) => void; }) => {
+export const Bus = (props: {onNavigate: (string: RootScreens) => void; }) => {
     
     const [search, setSearch] = useState('')
     const [select, setSelect] = useState('')
@@ -19,21 +19,26 @@ export const History = (props: {onNavigate: (string: RootScreens) => void; }) =>
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <View style={{marginBottom: '10%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                        <View style={{marginLeft: 0}}>
-                            <Ionicons 
-                                style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
-                                onPress={() => props.onNavigate(RootScreens.MAIN)}
-                            />
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{marginLeft: '5%', justifyContent: 'flex-start'}}>
+                            
                         </View>
-                        <View style={{}}>
-                            <Text style={styles.title}>Lịch sử</Text>
+                        <View>
+                            <Text style={styles.title}>Chọn tuyến xe buýt</Text>
                         </View>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setSearch}
+                            value={search}
+                            placeholder= {'Nhập chuyến xe cần tìm'}
+                        />
                     </View>
                 </ImageBackground>
             </View>
             <View style={styles.list}>
-                <HistoryLine onNavigate={props.onNavigate}/>
+                <BusLine onNavigate={props.onNavigate}/>
             </View>
         </View>
     )
@@ -105,12 +110,7 @@ const styles = StyleSheet.create({
     list: {
         backgroundColor: Colors.WHITE,
         minHeight: '10%',
-        height: '80%',
         width: '100%',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: '2%'
     },
     listItem: {
         // flex: 2,

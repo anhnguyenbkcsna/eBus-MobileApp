@@ -1,15 +1,20 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/Navigation";
-import {Route} from './Route';
 import { RootScreens } from "..";
 
-export const RouteContainer = ({
+import { Search } from "./Search";
+
+
+export const SearchContainer = ({
     navigation,
   }) => {
+  
     const onNavigate = (screen: RootScreens) => {
       navigation.navigate(screen);
     };
   
-    return <Route onNavigate={onNavigate} />;
-};
+    return <Search onNavigate={onNavigate} />;
+  
+  };
+

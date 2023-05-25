@@ -10,19 +10,19 @@ import { position } from "native-base/lib/typescript/theme/styled-system";
 import { RootScreens } from "..";
 
 type InputAutocompleteProps = {
-	placeholder: string,
 	onPlaceSelected: (details: GooglePlaceDetail | null) => void;
+	placeholder: string;
 }
 const InputAutocomplete = ({ 
-	placeholder, 
-	onPlaceSelected 
+	onPlaceSelected,
+	placeholder
 }: InputAutocompleteProps) => {
 	return <GooglePlacesAutocomplete
 		style={styles.formInput}
 		placeholder="Nhập địa điểm"
 		fetchDetails
 		returnKeyTypes={'search'}
-		minLength={2}
+		// minLength={2}
 		enablePoweredByContainer={false}
 		query={{
 			key: "AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE",
@@ -83,8 +83,9 @@ export const Route = (props: {onNavigate: (string: RootScreens) => void; }) => {
 				<ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
 					<View style={{marginLeft: '2%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
 						<Ionicons 
-							style={{fontSize: 30, color: 'white', backgroundColor: 'black'}} name="arrow-back-outline"
-							onPress={() => props.onNavigate(RootScreens.MAIN)}
+							onPress={() => props.onNavigate(RootScreens.PICK_START)}
+							style={{fontSize: 30, color: 'white', backgroundColor: 'black'}} 
+							name="arrow-back-outline"
 						/>
 					</View>
 					<View style={styles.formContainer}>

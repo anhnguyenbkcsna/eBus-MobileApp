@@ -6,64 +6,49 @@ import { Button, FlatList } from 'native-base';
 import { Colors } from "@/Theme/Variables";
 import { RootScreens } from "..";
 
-export const HistoryLine = (props: {onNavigate: (string: RootScreens) => void}) => {
+export const SearchLine = (props: {onNavigate: (string: RootScreens) => void}) => {
     const [select, setSelect] = useState()
     const DATA = [
         {
           id: 'Tuyến xe buýt số 1',
-          title: 'Đi từ trạm A đến trạm B',
+          title: 'First Item',
           price: '3000đ - 7000đ',
         },
         {
-            id: 'Tuyến xe buýt số 2',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
+          id: 'Tuyến xe buýt số 2',
+          title: 'Second Item',
+          price: '5000đ - 10000đ',
         },
         {
-            id: 'Tuyến xe buýt số 3',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
+          id: 'Tuyến xe buýt số 3',
+          title: 'Third Item',
+          price: '3000đ - 19000đ',
         },
         {
-            id: 'Tuyến xe buýt số 4',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
+          id: 'Tuyến xe buýt số 4',
+          title: 'Third Item',
+          price: '5000đ - 13000đ',
         },
         {
-            id: 'Tuyến xe buýt số 5',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
+          id: 'Tuyến xe buýt số 5',
+          title: 'Third Item',
+          price: '7000đ - 12000đ',
         },
         {
-            id: 'Tuyến xe buýt số 6',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
-        },
-        {
-            id: 'Tuyến xe buýt số 7',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
-        },
-        {
-            id: 'Tuyến xe buýt số 8',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
-        },
-        {
-            id: 'Tuyến xe buýt số 9',
-            title: 'Đi từ trạm A đến trạm B',
-            price: '3000đ - 7000đ',
+          id: 'Tuyến xe buýt số 6',
+          title: 'Third Item',
+          price: '6000đ - 20000đ',
         },
     ];
     return (
         <FlatList
-            style = {{width: '90%', flexDirection: 'column'}}
             data={DATA}
             keyExtractor={item => item.id}
             renderItem={({item, index}) => 
                 <TouchableOpacity 
                     style={styles.listItem} 
-                    key={index}
+                    onPress={() => props.onNavigate(RootScreens.MAIN)}
+                    key={index.toString()}
                 >
                     <>
                         <Image source={require('../../Assets/directions_bus.png')} style={styles.icon} resizeMode="contain"/>
@@ -87,16 +72,9 @@ const styles = StyleSheet.create({
     },
     listItem: {
         // flex: 2,
-        width: '100%',
         flexDirection: 'row',
-        textAlign: 'center',
-        borderWidth: 1,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '2%',
-        marginTop: '2%',
-        backgroundColor: 'lightgray'
+        padding: 10,
+        textAlign: 'center'
     },
     icon: {
         width: 30,

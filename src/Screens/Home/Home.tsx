@@ -38,19 +38,23 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
       </View>
 
       <View style={styles.map}>
-          <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: '-7%'}}>
-            <Searchbar
-              placeholder="Tìm kiếm địa điểm"
-              style={{width: '95%', 
-                      borderRadius: 10, 
-                      backgroundColor: 'white',
-                      shadowColor: 'black',
-                      shadowOpacity: 0.3,
-                      shadowOffset: { width: 0, height: 2 },
-                      shadowRadius: 10,
-                      elevation: 5}}
-            />
-          </View>
+          <TouchableOpacity 
+            style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: '-7%'}}
+            onPress={() => props.onNavigate(RootScreens.ROUTE)}
+          >
+              <Searchbar                
+                placeholder="Tìm kiếm địa điểm"
+                style={{width: '95%', 
+                        borderRadius: 10, 
+                        backgroundColor: 'white',
+                        shadowColor: 'black',
+                        shadowOpacity: 0.3,
+                        shadowOffset: { width: 0, height: 2 },
+                        shadowRadius: 10,
+                        elevation: 5}}
+              />
+            
+          </TouchableOpacity>
           <View style={{flex: 3, borderWidth: 1, borderRadius: 15, marginTop: '5%'}}>
             {/* <MapView style={{width: '100%', height: '100%', borderRadius: 15}} /> */}
             <MapView
@@ -71,7 +75,10 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
 
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity 
+                style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => props.onNavigate(RootScreens.SEARCH)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Pin.png')} 
                   style = {{height: 55, width: 55}}        
