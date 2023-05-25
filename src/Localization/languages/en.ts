@@ -22,5 +22,6 @@ export const en = {
   [LocalizationKey.TICKETINFO]: "Ticket info",
   [LocalizationKey.PAY]: "Pay",
   [LocalizationKey.OTHERPAYMENT]: "Other payment",
+  [LocalizationKey.FIND]: "Find",
 
 };

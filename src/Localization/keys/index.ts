@@ -21,4 +21,5 @@ export enum LocalizationKey {
   TICKETINFO = 'ticketinfo',
   PAY = 'pay',
   OTHERPAYMENT = 'otherpayment',
+  FIND = 'find',
 }
