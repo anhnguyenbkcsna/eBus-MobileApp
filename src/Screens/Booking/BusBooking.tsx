@@ -25,22 +25,6 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
             </View>
 
             <View style={styles.form}>
-                <TouchableOpacity  style={styles.formElement}>
-                    <>
-                    <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
-                    </Text>
-                    </>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.formElement}>
-                    <>
-                    <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
-                    </Text>
-                    </>
-                </TouchableOpacity>
                 <TouchableOpacity  
                     style={styles.formElement}
                     onPress={() => props.onNavigate(RootScreens.PICK_START)}
@@ -63,45 +47,6 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
                         </Text>
                     </>
                 </TouchableOpacity>
-
-                {/* <Button onPress={() => setOpen(true)} > */}
-                {/* <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
-                    <>
-                    <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
-                    </Text>
-                    </>
-                </TouchableOpacity> */}
-
-                <TouchableOpacity  
-                    style={styles.formElement}
-                    onPress={() => props.onNavigate(RootScreens.PICK_END)}
-                >
-                    <>
-                        <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
-                        <Text style={styles.formText}>
-                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
-                        </Text>
-                    </>
-                </TouchableOpacity>
-
-                {/* <Button onPress={() => setOpen(true)} >
-                <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
-                    <>
-                        <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                        <Text style={styles.formText}>
-                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
-                        </Text>
-                    </>
-                </TouchableOpacity> */}
-
-                {/* <Modal animationType='slide' transparent={true} visible={open}>
-                    <View>
-                        <DatePicker modal open={open} date={date} display="inline"/>
-                    </View>
-                </Modal> */}
-                {/* </Button> */}
 
                 <TouchableOpacity 
                     style={styles.formElement}
