@@ -5,6 +5,7 @@ import { Button, Modal } from 'native-base';
 import { Colors, FontSize } from "@/Theme/Variables";
 import DatePicker from 'react-native-date-picker'
 import { RadioButton } from 'react-native-paper';
+import { RootScreens } from "..";
 
 import { PickDate } from "./PickDate";
 export const TicketInfo = (props: {onNavigate: (string: RootScreens) => void; }) => {
@@ -70,7 +71,7 @@ export const TicketInfo = (props: {onNavigate: (string: RootScreens) => void; })
                 <Text style={styles.subtitle}>
                     Chọn hình thức thanh toán
                 </Text>
-                {payment.map((ele) => <TouchableOpacity style={styles.formElement} onPress={() => setChecked(ele)}>
+                {payment.map((ele, idx) => <TouchableOpacity key={idx} style={styles.formElement} onPress={() => setChecked(ele)}>
                     <RadioButton
                         color={Colors.PRIMARY}
                         value= {ele == "momo" ? "Momo" : i18n.t(LocalizationKey.OTHERPAYMENT)}
@@ -81,9 +82,9 @@ export const TicketInfo = (props: {onNavigate: (string: RootScreens) => void; })
                     </Text>
                 </TouchableOpacity>)}
             </View>
-            <Button style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={() => props.onNavigate(RootScreens.MAIN)}>
                 <Text style={styles.btnText}>{i18n.t(LocalizationKey.PAY)}</Text>
-            </Button>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -123,6 +124,9 @@ const styles = StyleSheet.create({
         width: '50%',
         height: '6%',
         backgroundColor: Colors.PRIMARY,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     btnText: {
         color: Colors.WHITE,

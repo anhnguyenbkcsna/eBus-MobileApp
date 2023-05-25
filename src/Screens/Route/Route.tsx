@@ -5,7 +5,9 @@ import { Colors, FontSize } from "@/Theme/Variables";
 import { GooglePlaceDetail, GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapViewDirections from "react-native-maps-directions";
+import { Ionicons } from '@expo/vector-icons';
 import { position } from "native-base/lib/typescript/theme/styled-system";
+import { RootScreens } from "..";
 
 type InputAutocompleteProps = {
 	placeholder: string,
@@ -33,15 +35,15 @@ const InputAutocomplete = ({
 		debounce={400}
 	/>
 }
-export const RouteContainer = () => {
+export const Route = (props: {onNavigate: (string: RootScreens) => void; }) => {
     // const REACT_APP_GOOGLE_MAPS_APIKEY = "AIzaSyBc7OA2KlNay-4w1531wG4AG8fQ2Fr0GPE";
 	const { width, height } = Dimensions.get('window');
 	const ASPECT_RATIO = width / height;
-	const LATITUDE_DELTA = 0.0922;
-	const LONGITUDE_DELTA = LATITUDE_DELTA * (16/9);
+	const LATITUDE_DELTA = 0.001;
+	const LONGITUDE_DELTA = 0.03;
 
 	const INITIAL_POSITION = {
-		latitude: 10.87973,
+		latitude: 10.87673,
 		longitude: 106.80594,
 		latitudeDelta: LATITUDE_DELTA,
 		longitudeDelta: LONGITUDE_DELTA,
@@ -57,19 +59,19 @@ export const RouteContainer = () => {
 		const camera = await mapRef.current?.getCamera()
 		if(camera) {
 			camera.center = position;
-			mapRef.current?.animateCamera(camera, {duration: 1000})
+			mapRef.current?.animateCamera(camera, {duration: 500})
 		}
 	}
 	const onPlaceSelected = (
 		details: GooglePlaceDetail | null,
 		flag: 'origin' | 'destination'
 	) => {
-		const set = flag === 'origin' ? setOrigin : setDestination
+		const set = flag == 'origin' ? setOrigin : setDestination
 		const position = {
 			latitude: details?.geometry.location.lat || 0,
 			longitude: details?.geometry.location.lng || 0,
 			latDelta: details?.geometry.viewport.northeast.lat - details?.geometry.viewport.southwest.lat || LATITUDE_DELTA,
-			lngDelta: (details?.geometry.viewport.northeast.lat - details?.geometry.viewport.southwest.lat) * ASPECT_RATIO,
+			lngDelta: (details?.geometry.viewport.northeast.lat - details?.geometry.viewport.southwest.lat) * 5 * ASPECT_RATIO,
 		}
 		set(position)
 		moveTo(position)
@@ -79,6 +81,12 @@ export const RouteContainer = () => {
 		<View style={styles.container}>
 			<View style={styles.topmidTitle}>
 				<ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
+					<View style={{marginLeft: '2%', flex: 1, flexDirection: 'row', justifyContent: 'flex-start',alignItems: 'center' }}>
+						<Ionicons 
+							style={{fontSize: 30, color: 'white', backgroundColor: 'black'}} name="arrow-back-outline"
+							onPress={() => props.onNavigate(RootScreens.MAIN)}
+						/>
+					</View>
 					<View style={styles.formContainer}>
 						<InputAutocomplete label="origin" onPlaceSelected={(details) => {
 							onPlaceSelected(details, "origin")
@@ -107,7 +115,7 @@ export const RouteContainer = () => {
 					showsUserLocation
 					provider={ PROVIDER_GOOGLE }
 					ref={mapRef}
-					initialRegion={INITIAL_POSITION}
+					region={INITIAL_POSITION}
 				>
 					{origin && <Marker coordinate={origin} />}
 					{destination && <Marker coordinate={destination} />}
@@ -142,6 +150,7 @@ const styles = StyleSheet.create({
 		top: '20%',
 		paddingHorizontal: 10,
 		overflow: 'visible',
+		paddingHorizontal: "12%",
 	},
 	// formInput: {
 	// 	marginVertical: 10,
