@@ -52,16 +52,16 @@ const ApplicationNavigator = () => {
           component={Welcome2Container}
         />
         <RootStack.Screen
+          name={RootScreens.MAIN}
+          component={MainNavigator}
+        />
+        <RootStack.Screen
           name={RootScreens.LOGIN}
           component={LoginContainer}
         />
         <RootStack.Screen
           name={RootScreens.REPORT}
           component={ReportContainer}
-        />
-        <RootStack.Screen
-          name={RootScreens.MAIN}
-          component={MainNavigator}
         />
         <RootStack.Screen
           name={RootScreens.ACCOUNT_DETAIL}

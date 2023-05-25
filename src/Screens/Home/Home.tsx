@@ -1,15 +1,21 @@
 import { i18n, LocalizationKey } from "@/Localization";
-import React from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, Button } from "react-native";
 import { Searchbar } from 'react-native-paper';
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
 import { RootScreens } from "..";
 import MapView from 'react-native-maps';
+import Modal from "react-native-modal";
+import { Colors, FontSize } from "@/Theme/Variables";
 
 
 export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
+  const [isModalVisible, setModalVisible] = useState(false)
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   const pos = {
 		lat: 10.87773,
 		long: 106.801594,
@@ -18,6 +24,13 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
 	}
   return (
     <View style={styles.container}>
+      <Modal isVisible={isModalVisible}>
+        <View style={{ flex: 1, backgroundColor: Colors.TERTIARY, justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}>
+          <Image resizeMode="contain" source={require('../../Assets/eBus.png')} alt='eBus' style={{width: '70%'}}/>
+          <Text style={{fontSize: FontSize.TITLE, marginBottom: '20%', color: Colors.TEXT}}>Tính năng đang phát triển</Text>
+          <Button title="Ẩn" onPress={toggleModal} color={Colors.PRIMARY}/>
+        </View>
+      </Modal>
       <View style={styles.header}>
           <ImageBackground
             source={require('../../../assets/Resources/top_bar.png')}
@@ -170,7 +183,9 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>             
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => setModalVisible(true)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Gameconsole.png')} 
                   style = {{height: 55, width: 55}}        
@@ -184,7 +199,10 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity 
+                style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => setModalVisible(true)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Sun.png')} 
                   style = {{height: 55, width: 55}}        
