@@ -239,6 +239,7 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 3,
+    borderRadius: 15
 
   },
 
