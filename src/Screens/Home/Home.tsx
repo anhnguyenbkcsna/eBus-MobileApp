@@ -115,7 +115,10 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}> 
             
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity 
+                style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => props.onNavigate(RootScreens.HISTORY)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Clock.png')} 
                   style = {{height: 55, width: 55}}        
