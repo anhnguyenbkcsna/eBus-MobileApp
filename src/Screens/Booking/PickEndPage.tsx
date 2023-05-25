@@ -31,7 +31,7 @@ export const PickEndPage = (props: {onNavigate: (string: RootScreens) => void; }
             </View>
 
             <View style={styles.list}>
-                <PickEnd />
+                <PickEnd onNavigate={props.onNavigate}/>
             </View>
         </View>
     )

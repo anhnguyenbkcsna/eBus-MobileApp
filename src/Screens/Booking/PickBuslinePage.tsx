@@ -31,7 +31,7 @@ export const PickBuslinePage = (props: {onNavigate: (string: RootScreens) => voi
             </View>
 
             <View style={styles.list}>
-                <PickBusLine />
+                <PickBusLine onNavigate={props.onNavigate}/>
             </View>
         </View>
     )

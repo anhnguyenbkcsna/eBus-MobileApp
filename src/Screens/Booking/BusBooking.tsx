@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { i18n, LocalizationKey } from "@/Localization";
-import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableHighlight } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpacity } from "react-native";
 import { Button, Modal } from "native-base";
 import { Colors, FontSize } from "@/Theme/Variables";
 import DatePicker from 'react-native-date-picker'
@@ -25,26 +25,38 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
             </View>
 
             <View style={styles.form}>
-                <TouchableHighlight  style={styles.formElement}>
-                    <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
-                    </Text>
-                </TouchableHighlight>
-                <TouchableHighlight  style={styles.formElement}>
-                    <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
-                    </Text>
-                </TouchableHighlight>
+                <TouchableOpacity  
+                    style={styles.formElement}
+                    onPress={() => props.onNavigate(RootScreens.PICK_START)}
+                >
+                    <>
+                        <Image source={require('../../Assets/Rec.png')} style={styles.logoImg} resizeMode="contain"/>
+                        <Text style={styles.formText}>
+                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSESTARTPOS) : startPos}
+                        </Text>
+                    </>
+                </TouchableOpacity>
+                <TouchableOpacity  
+                    style={styles.formElement}
+                    onPress={() => props.onNavigate(RootScreens.PICK_END)}
+                >
+                    <>
+                        <Image source={require('../../Assets/Placeholder.png')} style={styles.logoImg} resizeMode="contain"/>
+                        <Text style={styles.formText}>
+                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEENDPOS) : endPos}
+                        </Text>
+                    </>
+                </TouchableOpacity>
 
-                {/* <Button onPress={() => setOpen(true)} > */}
-                <TouchableHighlight style={styles.formElement} onPress={() => setOpen(true)} >
-                    <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
-                    </Text>
-                </TouchableHighlight>
+                {/* <Button onPress={() => setOpen(true)} >
+                <TouchableOpacity style={styles.formElement} onPress={() => setOpen(true)} >
+                    <>
+                        <Image source={require('../../Assets/Schedule.png')} style={styles.logoImg} resizeMode="contain"/>
+                        <Text style={styles.formText}>
+                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEDATE) : pickedDate}
+                        </Text>
+                    </>
+                </TouchableOpacity> */}
 
                 {/* <Modal animationType='slide' transparent={true} visible={open}>
                     <View>
@@ -53,12 +65,17 @@ export const BusBooking = (props: {onNavigate: (string: RootScreens) => void; })
                 </Modal> */}
                 {/* </Button> */}
 
-                <TouchableHighlight style={styles.formElement}>
-                    <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
-                    <Text style={styles.formText}>
-                        {startPos == '' ? i18n.t(LocalizationKey.CHOOSEBUSLINE) : busline}
-                    </Text>
-                </TouchableHighlight>
+                <TouchableOpacity 
+                    style={styles.formElement}
+                    onPress={() => props.onNavigate(RootScreens.PICK_BUSLINE)}
+                >
+                    <>
+                        <Image source={require('../../Assets/Bus.png')} style={styles.logoImg} resizeMode="contain"/>
+                        <Text style={styles.formText}>
+                            {startPos == '' ? i18n.t(LocalizationKey.CHOOSEBUSLINE) : busline}
+                        </Text>
+                    </>
+                </TouchableOpacity>
             </View>
             <Button style={styles.btn}>
                 <Text style={styles.btnText}>{i18n.t(LocalizationKey.BOOK)}</Text>

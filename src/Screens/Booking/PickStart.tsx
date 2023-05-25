@@ -4,8 +4,9 @@ import { View, Text, StyleSheet, Image, TextInput, ImageBackground, TouchableOpa
 import { RadioButton } from 'react-native-paper';
 import { Button, FlatList } from 'native-base';
 import { Colors } from "@/Theme/Variables";
+import { RootScreens } from "..";
 
-export const PickStart = () => {
+export const PickStart = (props: {onNavigate: (string: RootScreens) => void}) => {
     const [select, setSelect] = useState()
     const DATA = [
         {
@@ -28,7 +29,7 @@ export const PickStart = () => {
             renderItem={({item, index}) => 
                 <TouchableOpacity 
                     style={styles.listItem} 
-                    onPress={() => setSelect(item.id)}
+                    onPress={() => props.onNavigate(RootScreens.BUS_BOOKING)}
                     key={index.toString()}
                 >
                     <>
