@@ -11,10 +11,10 @@ import MapView from 'react-native-maps';
 
 export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
   const pos = {
-		lat: 10.87973,
-		long: 106.80594,
+		lat: 10.87773,
+		long: 106.801594,
 		latDelta: 0.001,
-		longDelta: 0.02,
+		longDelta: 0.03,
 	}
   return (
     <View style={styles.container}>
@@ -85,7 +85,10 @@ export const Home = (props: {onNavigate: (string: RootScreens) => void; }) => {
             </View>
 
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>            
-              <TouchableOpacity style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}>
+              <TouchableOpacity 
+                style = {{backgroundColor: '#50A458', padding: 7, borderRadius: 20}}
+                onPress={() => props.onNavigate(RootScreens.ROUTE)}
+              >
                 <Image 
                   source={require('../../../assets/Resources/Maps.png')} 
                   style = {{height: 55, width: 55}}        

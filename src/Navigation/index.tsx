@@ -10,7 +10,7 @@ import { AccountContainer, AccountNotLoginContainer, AccountDetailContainer, Rep
 import { PickStartContainer, PickEndContainer, PickBuslineContainer, BusBookingContainer, TicketInfoContainer} from "@/Screens/Booking";
 import { HistoryContainer } from "@/Screens/History";
 import { HomeContainer } from "@/Screens/Home";
-import { RouteContainer } from "@/Screens/Route";
+import { Route, RouteContainer } from "@/Screens/Route";
 
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
@@ -104,7 +104,7 @@ const ApplicationNavigator = () => {
         />
         <RootStack.Screen
           name={RootScreens.ROUTE}
-          component={RouteContainer}
+          component={Route}
         />
         <RootStack.Screen
           name={RootScreens.HISTORY}
