@@ -7,6 +7,7 @@ import { Button, FlatList } from 'native-base';
 import { Colors, FontSize } from "@/Theme/Variables";
 import ListItem from "react-native-paper/lib/typescript/src/components/List/ListItem";
 
+import { Ionicons } from '@expo/vector-icons';
 import { PickStart } from "./PickStart";
 import { PickEnd } from "./PickEnd";
 import { PickBusLine } from "./PickBusLine";
@@ -20,13 +21,25 @@ export const PickStartPage = (props: {onNavigate: (string: RootScreens) => void;
         <View style={styles.container}>
             <View style={styles.topmidTitle}>
                 <ImageBackground source={require('../../Assets/Top-bg.png')} resizeMode="cover" style={styles.bg}>
-                    <Text style={styles.title}>Chọn trạm xuất phát</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setSearch}
-                        value={search}
-                        placeholder= {'Nhập trạm cần tìm'}
-                    />
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{marginLeft: '5%', justifyContent: 'flex-start'}}>
+                            <Ionicons 
+                                style={{fontSize: 30, color: 'white'}} name="arrow-back-outline"
+                                onPress={() => props.onNavigate(RootScreens.BUS_BOOKING)}
+                            />
+                        </View>
+                        <View>
+                            <Text style={styles.title}>Chọn tuyến xe buýt</Text>
+                        </View>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setSearch}
+                            value={search}
+                            placeholder= {'Nhập chuyến xe cần tìm'}
+                        />
+                    </View>
                 </ImageBackground>
             </View>
 
@@ -71,7 +84,7 @@ const styles = StyleSheet.create({
     },
     bg: {
         justifyContent: "flex-end",
-        alignItems: 'center',
+        // alignItems: 'center',
         paddingVertical: '3%',
         width: "100%",
         minHeight: '20%',

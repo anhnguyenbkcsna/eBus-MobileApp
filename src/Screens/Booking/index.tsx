@@ -1,11 +1,13 @@
 import React from "react";
-import { PickStartPage} from "./PickStartPage";
-import { PickEndPage} from "./PickEndPage";
-import { PickBuslinePage} from "./PickBuslinePage";
-import { BusBooking} from "./BusBooking";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/Navigation";
 import { RootScreens } from "..";
+
+import { BusBooking} from "./BusBooking";
+import { PickStartPage} from "./PickStartPage";
+import { PickEndPage} from "./PickEndPage";
+import { PickBuslinePage} from "./PickBuslinePage";
+import { TicketInfo } from "./TicketInfo";
 
 export const PickStartContainer = ({
     navigation,
@@ -54,6 +56,19 @@ export const BusBookingContainer = ({
     return <BusBooking onNavigate={onNavigate} />;
   
   };
+
+export const TicketInfoContainer = ({
+    navigation,
+  }) => {
+  
+    const onNavigate = (screen: RootScreens) => {
+      navigation.navigate(screen);
+    };
+  
+    return <TicketInfo onNavigate={onNavigate} />;
+  
+  };
+
 
 
 

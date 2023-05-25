@@ -19,7 +19,10 @@ export const vi = {
   [LocalizationKey.CHOOSEENDPOS]: "Chọn điểm đến",
   [LocalizationKey.CHOOSEDATE]: "Chọn lịch",
   [LocalizationKey.CHOOSEBUSLINE]: "Chọn tuyến xe",
+  [LocalizationKey.NOTCHOOSEYET]: "Chưa chọn thông tin",
   [LocalizationKey.TICKETINFO]: "Thông tin vé xe buýt",
   [LocalizationKey.PAY]: "Thanh toán",
   [LocalizationKey.OTHERPAYMENT]: "Hình thức thanh toán khác",
+  [LocalizationKey.FIND]: "Tìm",
+
 };
