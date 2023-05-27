@@ -11,7 +11,6 @@ import { StyleSheet} from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, BottomNavigation } from 'react-native-paper';
 import { Button } from "native-base";
-import {  Icon } from "@react-native-material/core";
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();

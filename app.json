@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Expo Mobile",
+    "name": "eBus",
     "slug": "expo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,19 +22,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "p.h.a.m.h.u.u.p.h.u"
+      "package": "com.anhnguyenbkcsna.expo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [],
-    "extra": {
-      "eas": {
-        "projectId": "4ebd9a59-04c3-4fc9-af16-8b3df8db72c6"
-      }
-    }
+    "plugins": []
   }
 }
